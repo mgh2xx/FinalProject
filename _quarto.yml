@@ -1,0 +1,35 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Report Title"
+  author: "Brian Hockett, Ian, Connor, _"
+  #favicon: logo that goes on tab
+  description: Description
+  keyword: data science, communicating,
+  #url: deployment_url
+  sidebar:
+    #logo: a logo
+    search: true
+  repo-url: https://github.com/conorgibbons147/DS2023-Final-Project
+  repo-branch: master
+  #image: an image
+  
+  chapters:
+    - index.qmd
+    - datacleaning.qmd
+    - eda.qmd
+    - dataviz.qmd
+    - datadictionary.qmd
+
+
+format:
+  html:
+    theme:
+      light: minty
+    code-fold: false
+    backgroundcolor: "#FFFFFF"
+
+
+
