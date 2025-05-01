@@ -4,6 +4,10 @@ format: html
 ---
 
 ```{python}
+#| warning: false
+#| message: false
+
+
 # Imports
 import numpy as np
 import pandas as pd
