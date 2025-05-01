@@ -2,3 +2,39 @@
 title: "Data Cleaning"
 format: html
 ---
+
+```{python}
+# Imports
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings
+
+# Loading in data from season 1 and 2
+s1 = pd.read_csv("./data/catapult season 1.csv")
+s2 = pd.read_csv("./data/catapult season 2.csv")
+
+# Adding column with season to each dataset
+s1["Season"] = 1
+s2["Season"] = 2
+
+# Combining the two seasons of data into a single data frame
+data = pd.concat([s1, s2])
+
+# Converting date column to datetime
+data["Date"] = pd.to_datetime(data["Date"])
+
+# Ignoring the UserWarning raised by the above line. The warning raised tells me that not setting a specific format or handing errors could be problematic, but further
+# examination of the Date column showed that it is not, so I am hiding the warning from printing
+warnings.simplefilter(action = "ignore", category = UserWarning)
+
+# List of Variables Relevant to our Project
+columns_of_interest = ["Date", "About", "Period", "Player Load Per Minute", "IMA Accel Low", "IMA Accel High", "IMA Accel Total", "IMA Jump Count Low Band", "IMA Jump Count Med Band", "IMA Jump Count High Band", "Season"]
+
+# Filtering data frame to include only relevant variables
+data = data[columns_of_interest]
+
+# Showing first row
+data.head(1)
+```

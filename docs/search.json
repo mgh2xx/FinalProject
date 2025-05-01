@@ -1,0 +1,12 @@
+[
+  {
+    "objectID": "datacleaning.html",
+    "href": "datacleaning.html",
+    "title": "2  Data Cleaning",
+    "section": "",
+    "text": "# Imports\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport warnings\n\n# Loading in data from season 1 and 2\ns1 = pd.read_csv(\"./data/catapult season 1.csv\")\ns2 = pd.read_csv(\"./data/catapult season 2.csv\")\n\n# Adding column with season to each dataset\ns1[\"Season\"] = 1\ns2[\"Season\"] = 2\n\n# Combining the two seasons of data into a single data frame\ndata = pd.concat([s1, s2])\n\n# Converting date column to datetime\ndata[\"Date\"] = pd.to_datetime(data[\"Date\"])\n\n# Ignoring the UserWarning raised by the above line. The warning raised tells me that not setting a specific format or handing errors could be problematic, but further\n# examination of the Date column showed that it is not, so I am hiding the warning from printing\nwarnings.simplefilter(action = \"ignore\", category = UserWarning)\n\n# List of Variables Relevant to our Project\ncolumns_of_interest = [\"Date\", \"About\", \"Period\", \"Player Load Per Minute\", \"IMA Accel Low\", \"IMA Accel High\", \"IMA Accel Total\", \"IMA Jump Count Low Band\", \"IMA Jump Count Med Band\", \"IMA Jump Count High Band\", \"Season\"]\n\n# Filtering data frame to include only relevant variables\ndata = data[columns_of_interest]\n\n# Showing first row\ndata.head(1)\n\n/tmp/ipykernel_3224/4192660777.py:20: UserWarning:\n\nCould not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.\n\n\n\n\n\n\n\n\n\n\nDate\nAbout\nPeriod\nPlayer Load Per Minute\nIMA Accel Low\nIMA Accel High\nIMA Accel Total\nIMA Jump Count Low Band\nIMA Jump Count Med Band\nIMA Jump Count High Band\nSeason\n\n\n\n\n0\n2023-03-14\nAthlete I\n1. Pre Practice\n4.1\n3\n1\n4\n0\n17\n5\n1",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data Cleaning</span>"
+    ]
+  }
+]
