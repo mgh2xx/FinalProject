@@ -3,7 +3,11 @@ title: "Data Cleaning"
 format: html
 ---
 
-### Loading in Data
+## Data Description
+
+The data for this report is taken from the Catapult wearable used by the University of Virginia Men's Basketball Team. To maintain player privacy, the data provided was simulated from the actual data, and the players' identities were anonymized.
+
+## Loading in the Data
 
 This code chunk loads in the catapult data for each season from the data folder. Then, data from each season is marked with a season indicator column, before being combined into a single season. Next, the columns of the data are limited to the variables relevant for this study.
 
@@ -42,13 +46,11 @@ data = data[columns_of_interest]
 data.head(1)
 ```
 
-### Selecting Game Data
+## Selecting the Game Data
 
 Next, the data set is limited to include only data from game periods. Overtime periods are removed from the data as well, to standardize the game length to two halves.
 
 ```{python}
-# Making a temporary data frame which includes only game data
-
 # Filtering to include 'Period' - the keyword for game periods
 games = data[data["Period"].str.contains("Period") == True]
 
@@ -69,7 +71,7 @@ games.loc[games["Period"].str.contains("Period 2"), "Period"] = "Game Half 2"
 games.sort_values(by = ["Date", "About"]).head(2)
 ```
 
-### Aggregating Stats
+## Aggregating Statistics
 
 In its original format, the data for each game is split between halves. This code chunk limits the data to include only games where the player plays both halves, then properly aggregates the stats from the two halves into a single game value.
 
@@ -106,7 +108,7 @@ games_agg = games_agg[columns]
 games_agg.head(1)
 ```
 
-### Finalizing the Data 
+## Finalizing the Dataset 
 
 Lastly, proportion versions of the cumulative statistics tracked by Catapult were added to the data set. Because playing time varies greatly by player, using cumulative totals would have been misleading, so this allows for the proportion of each statistics to be examined. The final data set is then saved into the data folder to be used for EDA and visualization.
 

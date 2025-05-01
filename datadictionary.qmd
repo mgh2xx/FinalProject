@@ -3,3 +3,13 @@ title: "Data Dictionary"
 format: html
 ---
 
+## Data Dictionary
+
+| Variable Name         | Description                     | Type     | Example Value  |
+|-----------------------|---------------------------------|----------|----------------|
+| `Date`                | Date of the Catapult Measurement| Datetime |  2022-11-07    |
+| `About`               | Player Identifier               | String   | "Athlete A"    |
+| `Period`              | Type of Session Measurement is Made in| String   | "Game"    |
+| `Prop_Jump_Low`       | The proportion of total jumps measured which fall in the low band (0 to 20cm)            | Float   | 0.516   |
+| `Prop_Jump_Med`       | The proportion of total jumps measured which fall in the medium band (>20cm to 40cm) | Float   | 0.194   |
+| `Prop_Jump_High`      | The proportion of total jumps measured which fall in the high band (>40cm)                | Float   | 0.290   |
