@@ -1,5 +1,6 @@
 ---
 title: "Report"
 format: html
+number: false
 ---
 

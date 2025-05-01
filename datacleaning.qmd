@@ -110,7 +110,7 @@ games_agg.head(1)
 
 ## Finalizing the Dataset 
 
-Lastly, proportion versions of the cumulative statistics tracked by Catapult were added to the data set. Because playing time varies greatly by player, using cumulative totals would have been misleading, so this allows for the proportion of each statistics to be examined. The final data set is then saved into the data folder to be used for EDA and visualization.
+Lastly, proportion versions of the cumulative statistics tracked by Catapult were added to the data set. Because playing time varies greatly by player, using cumulative totals would have been misleading, so this allows for the proportion of each statistic to be examined. The final data set is then saved into the data folder to be used for EDA and visualization.
 
 ```{python}
 # Concatenating the games and scrimmage data frames back into one data frame
