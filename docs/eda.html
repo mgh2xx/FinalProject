@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="descriptive-statistics" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">3.1</span> Descriptive Statistics</h2>
-<div id="b912b8cc" class="cell" data-execution_count="2">
+<div id="17923aa8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data.iloc[:, :<span class="op">-</span><span class="dv">1</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -327,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="distributions" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="distributions"><span class="header-section-number">3.2</span> Distributions</h2>
-<div id="3cefe102" class="cell" data-execution_count="3">
+<div id="a1d36711" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing Figure</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -349,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="e60b32f3" class="cell" data-execution_count="4">
+<div id="5b04111f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing Figure</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -371,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="03157853" class="cell" data-execution_count="5">
+<div id="57708b80" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing Figure</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -393,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="e1ad10c1" class="cell" data-execution_count="6">
+<div id="0ddac068" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing Figure</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -420,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="change-over-time" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="change-over-time"><span class="header-section-number">3.3</span> Change Over Time</h2>
-<div id="51ba8e74" class="cell" data-execution_count="7">
+<div id="b67d58cd" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Melting dfs</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> data[data[<span class="st">"Season"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>s1_melted <span class="op">=</span> s1.melt(id_vars <span class="op">=</span> <span class="st">'Date'</span>, value_vars <span class="op">=</span> [<span class="st">'Prop_Jump_Low'</span>, <span class="st">'Prop_Jump_Med'</span>, <span class="st">'Prop_Jump_High'</span>], var_name <span class="op">=</span> <span class="st">'Jump Band'</span>, value_name <span class="op">=</span> <span class="st">'Proportion'</span>)</span>
@@ -429,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>s2_melted <span class="op">=</span> s2.melt(id_vars <span class="op">=</span> <span class="st">'Date'</span>, value_vars <span class="op">=</span> [<span class="st">'Prop_Jump_Low'</span>, <span class="st">'Prop_Jump_Med'</span>, <span class="st">'Prop_Jump_High'</span>], var_name <span class="op">=</span> <span class="st">'Jump Band'</span>, value_name <span class="op">=</span> <span class="st">'Proportion'</span>)</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating Figure and Flattening Axes</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">10</span>), sharey <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize <span class="op">=</span> (<span class="dv">20</span>, <span class="dv">10</span>), sharey <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>axs <span class="op">=</span> axs.flatten()</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Looping through subplots, dfs, and seasons</span></span>
@@ -450,7 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="eda_files/figure-html/cell-8-output-1.png" width="812" height="819" class="figure-img"></p>
+<p><img src="eda_files/figure-html/cell-8-output-1.png" width="1556" height="819" class="figure-img"></p>
 </figure>
 </div>
 </div>
