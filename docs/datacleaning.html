@@ -182,8 +182,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#loading-in-data" id="toc-loading-in-data" class="nav-link active" data-scroll-target="#loading-in-data"><span class="header-section-number">2.0.1</span> Loading in Data</a></li>
+  <li><a href="#selecting-game-data" id="toc-selecting-game-data" class="nav-link" data-scroll-target="#selecting-game-data"><span class="header-section-number">2.0.2</span> Selecting Game Data</a></li>
+  <li><a href="#aggregating-stats" id="toc-aggregating-stats" class="nav-link" data-scroll-target="#aggregating-stats"><span class="header-section-number">2.0.3</span> Aggregating Stats</a></li>
+  <li><a href="#finalizing-the-data" id="toc-finalizing-the-data" class="nav-link" data-scroll-target="#finalizing-the-data"><span class="header-section-number">2.0.4</span> Finalizing the Data</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -207,7 +216,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="f3c3d905" class="cell" data-message="false" data-execution_count="1">
+<section id="loading-in-data" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="loading-in-data"><span class="header-section-number">2.0.1</span> Loading in Data</h3>
+<p>This code chunk loads in the catapult data for each season from the data folder. Then, data from each season is marked with a season indicator column, before being combined into a single season. Next, the columns of the data are limited to the variables relevant for this study.</p>
+<div id="2bb526de" class="cell" data-message="false" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imports</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -229,18 +241,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Converting date column to datetime</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(data[<span class="st">"Date"</span>])</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignoring the UserWarning raised by the above line. The warning raised tells me that not setting a specific format or handing errors could be problematic, but further</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># examination of the Date column showed that it is not, so I am hiding the warning from printing</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>warnings.simplefilter(action <span class="op">=</span> <span class="st">"ignore"</span>, category <span class="op">=</span> <span class="pp">UserWarning</span>)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># List of Variables Relevant to our Project</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>columns_of_interest <span class="op">=</span> [<span class="st">"Date"</span>, <span class="st">"About"</span>, <span class="st">"Period"</span>, <span class="st">"Player Load Per Minute"</span>, <span class="st">"IMA Accel Low"</span>, <span class="st">"IMA Accel High"</span>, <span class="st">"IMA Accel Total"</span>, <span class="st">"IMA Jump Count Low Band"</span>, <span class="st">"IMA Jump Count Med Band"</span>, <span class="st">"IMA Jump Count High Band"</span>, <span class="st">"Season"</span>]</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering data frame to include only relevant variables</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data[columns_of_interest]</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing first row</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>data.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># List of Variables Relevant to our Project</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>columns_of_interest <span class="op">=</span> [<span class="st">"Date"</span>, <span class="st">"About"</span>, <span class="st">"Period"</span>, <span class="st">"Player Load Per Minute"</span>, <span class="st">"IMA Accel Low"</span>, <span class="st">"IMA Accel High"</span>, <span class="st">"IMA Accel Total"</span>, <span class="st">"IMA Jump Count Low Band"</span>, <span class="st">"IMA Jump Count Med Band"</span>, <span class="st">"IMA Jump Count High Band"</span>, <span class="st">"Season"</span>]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering data frame to include only relevant variables</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data[columns_of_interest]</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing first row</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>data.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
@@ -283,8 +291,275 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="selecting-game-data" class="level3" data-number="2.0.2">
+<h3 data-number="2.0.2" class="anchored" data-anchor-id="selecting-game-data"><span class="header-section-number">2.0.2</span> Selecting Game Data</h3>
+<p>Next, the data set is limited to include only data from game periods. Overtime periods are removed from the data as well, to standardize the game length to two halves.</p>
+<div id="d94453f2" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Making a temporary data frame which includes only game data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering to include 'Period' - the keyword for game periods</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>games <span class="op">=</span> data[data[<span class="st">"Period"</span>].<span class="bu">str</span>.contains(<span class="st">"Period"</span>) <span class="op">==</span> <span class="va">True</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering to exclude 'Play' - a keyword which also has period used for scrimmages</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>games <span class="op">=</span> games[games[<span class="st">"Period"</span>].<span class="bu">str</span>.contains(<span class="st">"Play"</span>) <span class="op">==</span> <span class="va">False</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering to exclude 'Auto' - a keyword used to code periods that are automatically coded</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>games <span class="op">=</span> games[games[<span class="st">"Period"</span>].<span class="bu">str</span>.contains(<span class="st">"Auto"</span>) <span class="op">==</span> <span class="va">False</span>]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering to exclude 'Period 3' - these are overtime periods, not relevant to work</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>games <span class="op">=</span> games[games[<span class="st">"Period"</span>].<span class="bu">str</span>.contains(<span class="st">"Period 3"</span>) <span class="op">==</span> <span class="va">False</span>]</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Renaming the periods to be easier to understand</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>games.loc[games[<span class="st">"Period"</span>].<span class="bu">str</span>.contains(<span class="st">"Period 1"</span>), <span class="st">"Period"</span>] <span class="op">=</span> <span class="st">"Game Half 1"</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>games.loc[games[<span class="st">"Period"</span>].<span class="bu">str</span>.contains(<span class="st">"Period 2"</span>), <span class="st">"Period"</span>] <span class="op">=</span> <span class="st">"Game Half 2"</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing first 2 rows of temp data frame</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>games.sort_values(by <span class="op">=</span> [<span class="st">"Date"</span>, <span class="st">"About"</span>]).head(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">About</th>
+<th data-quarto-table-cell-role="th">Period</th>
+<th data-quarto-table-cell-role="th">Player Load Per Minute</th>
+<th data-quarto-table-cell-role="th">IMA Accel Low</th>
+<th data-quarto-table-cell-role="th">IMA Accel High</th>
+<th data-quarto-table-cell-role="th">IMA Accel Total</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Low Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Med Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count High Band</th>
+<th data-quarto-table-cell-role="th">Season</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12285</td>
+<td>2022-11-07</td>
+<td>Athlete A</td>
+<td>Game Half 1</td>
+<td>9.5</td>
+<td>13</td>
+<td>4</td>
+<td>25</td>
+<td>10</td>
+<td>5</td>
+<td>6</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">12286</td>
+<td>2022-11-07</td>
+<td>Athlete A</td>
+<td>Game Half 2</td>
+<td>9.5</td>
+<td>8</td>
+<td>0</td>
+<td>11</td>
+<td>6</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="aggregating-stats" class="level3" data-number="2.0.3">
+<h3 data-number="2.0.3" class="anchored" data-anchor-id="aggregating-stats"><span class="header-section-number">2.0.3</span> Aggregating Stats</h3>
+<p>In its original format, the data for each game is split between halves. This code chunk limits the data to include only games where the player plays both halves, then properly aggregates the stats from the two halves into a single game value.</p>
+<div id="8a2760b6" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of halves by player by date. This will be used to filter out games where the player played only  1 half </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>half_counts <span class="op">=</span> games.groupby([<span class="st">'Date'</span>, <span class="st">'About'</span>, <span class="st">'Season'</span>])[<span class="st">'Period'</span>].count().reset_index(name <span class="op">=</span> <span class="st">'Half Count'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding half_counts to the games df</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>games <span class="op">=</span> games.merge(half_counts, on <span class="op">=</span> [<span class="st">'Date'</span>, <span class="st">'About'</span>, <span class="st">'Season'</span>])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtering out games that don't have 2 halves played by the player</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>full_games <span class="op">=</span> games[games[<span class="st">'Half Count'</span>] <span class="op">==</span> <span class="dv">2</span>]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregating the values</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>games_agg <span class="op">=</span> full_games.groupby([<span class="st">'Date'</span>, <span class="st">'About'</span>, <span class="st">'Season'</span>], as_index <span class="op">=</span> <span class="va">False</span>).agg(</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Player Load Per Minute'</span>: <span class="st">'mean'</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IMA Accel Low'</span>: <span class="st">'sum'</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IMA Accel High'</span>: <span class="st">'sum'</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IMA Accel Total'</span> : <span class="st">'sum'</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IMA Jump Count Low Band'</span> : <span class="st">'sum'</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IMA Jump Count Med Band'</span> : <span class="st">'sum'</span>,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'IMA Jump Count High Band'</span> : <span class="st">'sum'</span>,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Putting Period label back in to match scrims data frame when merged</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>games_agg[<span class="st">'Period'</span>] <span class="op">=</span> <span class="st">'Game'</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-ordering columns</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>columns <span class="op">=</span> [<span class="st">'Date'</span>, <span class="st">'About'</span>, <span class="st">'Period'</span>, <span class="st">'Player Load Per Minute'</span>, <span class="st">'IMA Accel Low'</span>, <span class="st">'IMA Accel High'</span>, <span class="st">'IMA Accel Total'</span>, <span class="st">'IMA Jump Count Low Band'</span>, <span class="st">'IMA Jump Count Med Band'</span>, <span class="st">'IMA Jump Count High Band'</span>, <span class="st">'Season'</span>]</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>games_agg <span class="op">=</span> games_agg[columns]</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing row of df</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>games_agg.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">About</th>
+<th data-quarto-table-cell-role="th">Period</th>
+<th data-quarto-table-cell-role="th">Player Load Per Minute</th>
+<th data-quarto-table-cell-role="th">IMA Accel Low</th>
+<th data-quarto-table-cell-role="th">IMA Accel High</th>
+<th data-quarto-table-cell-role="th">IMA Accel Total</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Low Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Med Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count High Band</th>
+<th data-quarto-table-cell-role="th">Season</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2022-11-07</td>
+<td>Athlete A</td>
+<td>Game</td>
+<td>9.5</td>
+<td>21</td>
+<td>4</td>
+<td>36</td>
+<td>16</td>
+<td>6</td>
+<td>9</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="finalizing-the-data" class="level3" data-number="2.0.4">
+<h3 data-number="2.0.4" class="anchored" data-anchor-id="finalizing-the-data"><span class="header-section-number">2.0.4</span> Finalizing the Data</h3>
+<p>Lastly, proportion versions of the cumulative statistics tracked by Catapult were added to the data set. Because playing time varies greatly by player, using cumulative totals would have been misleading, so this allows for the proportion of each statistics to be examined. The final data set is then saved into the data folder to be used for EDA and visualization.</p>
+<div id="4ba01a6f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Concatenating the games and scrimmage data frames back into one data frame</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> games_agg</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Making variables to hold high accel and jump proportions</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Prop_Accel_High"</span>] <span class="op">=</span> data[<span class="st">"IMA Accel High"</span>] <span class="op">/</span> data[<span class="st">"IMA Accel Total"</span>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Prop_Jump_High"</span>] <span class="op">=</span> data[<span class="st">"IMA Jump Count High Band"</span>] <span class="op">/</span> (data[<span class="st">"IMA Jump Count High Band"</span>] <span class="op">+</span> data[<span class="st">"IMA Jump Count Low Band"</span>] <span class="op">+</span> data[<span class="st">"IMA Jump Count Med Band"</span>])</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Prop_Jump_Med"</span>] <span class="op">=</span> data[<span class="st">"IMA Jump Count Med Band"</span>] <span class="op">/</span> (data[<span class="st">"IMA Jump Count High Band"</span>] <span class="op">+</span> data[<span class="st">"IMA Jump Count Low Band"</span>] <span class="op">+</span> data[<span class="st">"IMA Jump Count Med Band"</span>])</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>data[<span class="st">"Prop_Jump_Low"</span>] <span class="op">=</span> data[<span class="st">"IMA Jump Count Low Band"</span>] <span class="op">/</span> (data[<span class="st">"IMA Jump Count High Band"</span>] <span class="op">+</span> data[<span class="st">"IMA Jump Count Low Band"</span>] <span class="op">+</span> data[<span class="st">"IMA Jump Count Med Band"</span>])</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting rid of Ben Vander Plas, who presumably shouldn't have his name in the data</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data[data[<span class="st">"About"</span>] <span class="op">!=</span> <span class="st">"Ben Vander Plas"</span>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Saving the cleaned data</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>data.to_csv(<span class="st">'./data/cleaned_data.csv'</span>, index <span class="op">=</span> <span class="va">False</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing first 3 rows of combined data</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>data.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">About</th>
+<th data-quarto-table-cell-role="th">Period</th>
+<th data-quarto-table-cell-role="th">Player Load Per Minute</th>
+<th data-quarto-table-cell-role="th">IMA Accel Low</th>
+<th data-quarto-table-cell-role="th">IMA Accel High</th>
+<th data-quarto-table-cell-role="th">IMA Accel Total</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Low Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Med Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count High Band</th>
+<th data-quarto-table-cell-role="th">Season</th>
+<th data-quarto-table-cell-role="th">Prop_Accel_High</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_High</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_Med</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_Low</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2022-11-07</td>
+<td>Athlete A</td>
+<td>Game</td>
+<td>9.5</td>
+<td>21</td>
+<td>4</td>
+<td>36</td>
+<td>16</td>
+<td>6</td>
+<td>9</td>
+<td>1</td>
+<td>0.111111</td>
+<td>0.290323</td>
+<td>0.193548</td>
+<td>0.516129</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2022-11-07</td>
+<td>Athlete C</td>
+<td>Game</td>
+<td>8.4</td>
+<td>20</td>
+<td>3</td>
+<td>32</td>
+<td>29</td>
+<td>14</td>
+<td>6</td>
+<td>1</td>
+<td>0.093750</td>
+<td>0.122449</td>
+<td>0.285714</td>
+<td>0.591837</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2022-11-07</td>
+<td>Athlete D</td>
+<td>Game</td>
+<td>8.9</td>
+<td>37</td>
+<td>11</td>
+<td>62</td>
+<td>35</td>
+<td>11</td>
+<td>22</td>
+<td>1</td>
+<td>0.177419</td>
+<td>0.323529</td>
+<td>0.161765</td>
+<td>0.514706</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

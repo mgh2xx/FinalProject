@@ -3,10 +3,13 @@ title: "Data Cleaning"
 format: html
 ---
 
+### Loading in Data
+
+This code chunk loads in the catapult data for each season from the data folder. Then, data from each season is marked with a season indicator column, before being combined into a single season. Next, the columns of the data are limited to the variables relevant for this study.
+
 ```{python}
 #| warning: false
 #| message: false
-
 
 # Imports
 import numpy as np
@@ -29,10 +32,6 @@ data = pd.concat([s1, s2])
 # Converting date column to datetime
 data["Date"] = pd.to_datetime(data["Date"])
 
-# Ignoring the UserWarning raised by the above line. The warning raised tells me that not setting a specific format or handing errors could be problematic, but further
-# examination of the Date column showed that it is not, so I am hiding the warning from printing
-warnings.simplefilter(action = "ignore", category = UserWarning)
-
 # List of Variables Relevant to our Project
 columns_of_interest = ["Date", "About", "Period", "Player Load Per Minute", "IMA Accel Low", "IMA Accel High", "IMA Accel Total", "IMA Jump Count Low Band", "IMA Jump Count Med Band", "IMA Jump Count High Band", "Season"]
 
@@ -41,4 +40,92 @@ data = data[columns_of_interest]
 
 # Showing first row
 data.head(1)
+```
+
+### Selecting Game Data
+
+Next, the data set is limited to include only data from game periods. Overtime periods are removed from the data as well, to standardize the game length to two halves.
+
+```{python}
+# Making a temporary data frame which includes only game data
+
+# Filtering to include 'Period' - the keyword for game periods
+games = data[data["Period"].str.contains("Period") == True]
+
+# Filtering to exclude 'Play' - a keyword which also has period used for scrimmages
+games = games[games["Period"].str.contains("Play") == False]
+
+# Filtering to exclude 'Auto' - a keyword used to code periods that are automatically coded
+games = games[games["Period"].str.contains("Auto") == False]
+
+# Filtering to exclude 'Period 3' - these are overtime periods, not relevant to work
+games = games[games["Period"].str.contains("Period 3") == False]
+
+# Renaming the periods to be easier to understand
+games.loc[games["Period"].str.contains("Period 1"), "Period"] = "Game Half 1"
+games.loc[games["Period"].str.contains("Period 2"), "Period"] = "Game Half 2"
+
+# Showing first 2 rows of temp data frame
+games.sort_values(by = ["Date", "About"]).head(2)
+```
+
+### Aggregating Stats
+
+In its original format, the data for each game is split between halves. This code chunk limits the data to include only games where the player plays both halves, then properly aggregates the stats from the two halves into a single game value.
+
+```{python}
+# Number of halves by player by date. This will be used to filter out games where the player played only  1 half 
+half_counts = games.groupby(['Date', 'About', 'Season'])['Period'].count().reset_index(name = 'Half Count')
+
+# Adding half_counts to the games df
+games = games.merge(half_counts, on = ['Date', 'About', 'Season'])
+
+# Filtering out games that don't have 2 halves played by the player
+full_games = games[games['Half Count'] == 2]
+
+# Aggregating the values
+games_agg = full_games.groupby(['Date', 'About', 'Season'], as_index = False).agg(
+    {
+    'Player Load Per Minute': 'mean',
+    'IMA Accel Low': 'sum',
+    'IMA Accel High': 'sum',
+    'IMA Accel Total' : 'sum',
+    'IMA Jump Count Low Band' : 'sum',
+    'IMA Jump Count Med Band' : 'sum',
+    'IMA Jump Count High Band' : 'sum',
+    })
+
+# Putting Period label back in to match scrims data frame when merged
+games_agg['Period'] = 'Game'
+
+# Re-ordering columns
+columns = ['Date', 'About', 'Period', 'Player Load Per Minute', 'IMA Accel Low', 'IMA Accel High', 'IMA Accel Total', 'IMA Jump Count Low Band', 'IMA Jump Count Med Band', 'IMA Jump Count High Band', 'Season']
+games_agg = games_agg[columns]
+
+# Showing row of df
+games_agg.head(1)
+```
+
+### Finalizing the Data 
+
+Lastly, proportion versions of the cumulative statistics tracked by Catapult were added to the data set. Because playing time varies greatly by player, using cumulative totals would have been misleading, so this allows for the proportion of each statistics to be examined. The final data set is then saved into the data folder to be used for EDA and visualization.
+
+```{python}
+# Concatenating the games and scrimmage data frames back into one data frame
+data = games_agg
+
+# Making variables to hold high accel and jump proportions
+data["Prop_Accel_High"] = data["IMA Accel High"] / data["IMA Accel Total"]
+data["Prop_Jump_High"] = data["IMA Jump Count High Band"] / (data["IMA Jump Count High Band"] + data["IMA Jump Count Low Band"] + data["IMA Jump Count Med Band"])
+data["Prop_Jump_Med"] = data["IMA Jump Count Med Band"] / (data["IMA Jump Count High Band"] + data["IMA Jump Count Low Band"] + data["IMA Jump Count Med Band"])
+data["Prop_Jump_Low"] = data["IMA Jump Count Low Band"] / (data["IMA Jump Count High Band"] + data["IMA Jump Count Low Band"] + data["IMA Jump Count Med Band"])
+
+# Getting rid of Ben Vander Plas, who presumably shouldn't have his name in the data
+data = data[data["About"] != "Ben Vander Plas"]
+
+# Saving the cleaned data
+data.to_csv('./data/cleaned_data.csv', index = False)
+
+# Showing first 3 rows of combined data
+data.head(3)
 ```
