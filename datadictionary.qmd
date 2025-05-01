@@ -3,11 +3,11 @@ title: "Data Dictionary"
 format: html
 ---
 
-## Data Dictionary
 
 | Variable Name         | Description                     | Type     | Example Value  |
 |-----------------------|---------------------------------|----------|----------------|
 | `Date`                | Date of the Catapult Measurement| Datetime |  2022-11-07    |
+| `Adjusted Day`                | Days since the start of the first season. For two season players, the first day of the second season is one "day" after the end of the first| Int |  50    |
 | `About`               | Player Identifier               | String   | "Athlete A"    |
 | `Period`              | Type of Session Measurement is Made in| String   | "Game"    |
 | `Prop_Jump_Low`       | The proportion of total jumps measured which fall in the low band (0 to 20cm)            | Float   | 0.516   |

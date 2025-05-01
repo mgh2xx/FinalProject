@@ -54,17 +54,7 @@
     "href": "datadictionary.html",
     "title": "5  Data Dictionary",
     "section": "",
-    "text": "5.1 Data Dictionary",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Dictionary</span>"
-    ]
-  },
-  {
-    "objectID": "datadictionary.html#data-dictionary",
-    "href": "datadictionary.html#data-dictionary",
-    "title": "5  Data Dictionary",
-    "section": "",
-    "text": "Variable Name\nDescription\nType\nExample Value\n\n\n\n\nDate\nDate of the Catapult Measurement\nDatetime\n2022-11-07\n\n\nAbout\nPlayer Identifier\nString\n“Athlete A”\n\n\nPeriod\nType of Session Measurement is Made in\nString\n“Game”\n\n\nProp_Jump_Low\nThe proportion of total jumps measured which fall in the low band (0 to 20cm)\nFloat\n0.516\n\n\nProp_Jump_Med\nThe proportion of total jumps measured which fall in the medium band (&gt;20cm to 40cm)\nFloat\n0.194\n\n\nProp_Jump_High\nThe proportion of total jumps measured which fall in the high band (&gt;40cm)\nFloat\n0.290",
+    "text": "Variable Name\nDescription\nType\nExample Value\n\n\n\n\nDate\nDate of the Catapult Measurement\nDatetime\n2022-11-07\n\n\nAdjusted Day\nDays since the start of the first season. For two season players, the first day of the second season is one “day” after the end of the first\nInt\n50\n\n\nAbout\nPlayer Identifier\nString\n“Athlete A”\n\n\nPeriod\nType of Session Measurement is Made in\nString\n“Game”\n\n\nProp_Jump_Low\nThe proportion of total jumps measured which fall in the low band (0 to 20cm)\nFloat\n0.516\n\n\nProp_Jump_Med\nThe proportion of total jumps measured which fall in the medium band (&gt;20cm to 40cm)\nFloat\n0.194\n\n\nProp_Jump_High\nThe proportion of total jumps measured which fall in the high band (&gt;40cm)\nFloat\n0.290",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Data Dictionary</span>"
     ]

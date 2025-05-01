@@ -144,14 +144,8 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#data-dictionary" id="toc-data-dictionary" class="nav-link active" data-scroll-target="#data-dictionary"><span class="header-section-number">5.1</span> Data Dictionary</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -175,8 +169,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="data-dictionary" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="data-dictionary"><span class="header-section-number">5.1</span> Data Dictionary</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 28%">
@@ -200,30 +192,36 @@ ul.task-list li input[type="checkbox"] {
 <td>2022-11-07</td>
 </tr>
 <tr class="even">
+<td><code>Adjusted Day</code></td>
+<td>Days since the start of the first season. For two season players, the first day of the second season is one “day” after the end of the first</td>
+<td>Int</td>
+<td>50</td>
+</tr>
+<tr class="odd">
 <td><code>About</code></td>
 <td>Player Identifier</td>
 <td>String</td>
 <td>“Athlete A”</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>Period</code></td>
 <td>Type of Session Measurement is Made in</td>
 <td>String</td>
 <td>“Game”</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>Prop_Jump_Low</code></td>
 <td>The proportion of total jumps measured which fall in the low band (0 to 20cm)</td>
 <td>Float</td>
 <td>0.516</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>Prop_Jump_Med</code></td>
 <td>The proportion of total jumps measured which fall in the medium band (&gt;20cm to 40cm)</td>
 <td>Float</td>
 <td>0.194</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>Prop_Jump_High</code></td>
 <td>The proportion of total jumps measured which fall in the high band (&gt;40cm)</td>
 <td>Float</td>
@@ -233,7 +231,6 @@ ul.task-list li input[type="checkbox"] {
 </table>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
