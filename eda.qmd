@@ -107,7 +107,7 @@ s2 = data[data["Season"] == 2]
 s2_melted = s2.melt(id_vars = 'Date', value_vars = ['Prop_Jump_Low', 'Prop_Jump_Med', 'Prop_Jump_High'], var_name = 'Jump Band', value_name = 'Proportion')
 
 # Creating Figure and Flattening Axes
-fig, axs = plt.subplots(1, 2, figsize = (30, 10), sharey = True)
+fig, axs = plt.subplots(1, 2, figsize = (20, 10), sharey = True)
 axs = axs.flatten()
 
 # Looping through subplots, dfs, and seasons
