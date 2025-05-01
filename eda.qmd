@@ -96,6 +96,32 @@ plt.xticks()
 plt.show()
 ```
 
+## Change Over Time 
+
+```{python}
+# Melting dfs
+s1 = data[data["Season"] == 1]
+s1_melted = s1.melt(id_vars = 'Date', value_vars = ['Prop_Jump_Low', 'Prop_Jump_Med', 'Prop_Jump_High'], var_name = 'Jump Band', value_name = 'Proportion')
+
+s2 = data[data["Season"] == 2]
+s2_melted = s2.melt(id_vars = 'Date', value_vars = ['Prop_Jump_Low', 'Prop_Jump_Med', 'Prop_Jump_High'], var_name = 'Jump Band', value_name = 'Proportion')
+
+# Creating Figure and Flattening Axes
+fig, axs = plt.subplots(1, 2, figsize = (30, 10), sharey = True)
+axs = axs.flatten()
+
+# Looping through subplots, dfs, and seasons
+for ax, df, s in zip(axs, [s1_melted, s2_melted], [1, 2]):
+    plot = sns.lineplot(df, x = 'Date', y = 'Proportion', hue = 'Jump Band', errorbar = ('ci', False), ax = ax)
+    ax.set_title(f"Season {s} Jump Band Proportions over Time")
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Proportion")
+
+
+# Showing plot
+plt.show()
+```
+
 ## Correlations
 ```{python}
 

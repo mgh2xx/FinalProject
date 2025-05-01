@@ -189,7 +189,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link active" data-scroll-target="#descriptive-statistics"><span class="header-section-number">3.1</span> Descriptive Statistics</a></li>
   <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions"><span class="header-section-number">3.2</span> Distributions</a></li>
-  <li><a href="#correlations" id="toc-correlations" class="nav-link" data-scroll-target="#correlations"><span class="header-section-number">3.3</span> Correlations</a></li>
+  <li><a href="#change-over-time" id="toc-change-over-time" class="nav-link" data-scroll-target="#change-over-time"><span class="header-section-number">3.3</span> Change Over Time</a></li>
+  <li><a href="#correlations" id="toc-correlations" class="nav-link" data-scroll-target="#correlations"><span class="header-section-number">3.4</span> Correlations</a></li>
   </ul>
 </nav>
     </div>
@@ -217,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="descriptive-statistics" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">3.1</span> Descriptive Statistics</h2>
-<div id="dff96ba0" class="cell" data-execution_count="2">
+<div id="2f7b97d4" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data.iloc[:, :<span class="op">-</span><span class="dv">1</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -326,7 +327,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="distributions" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="distributions"><span class="header-section-number">3.2</span> Distributions</h2>
-<div id="fe3a566b" class="cell" data-execution_count="3">
+<div id="e18b35bc" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing Figure</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -348,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="89e40e98" class="cell" data-execution_count="4">
+<div id="8139a1f6" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing Figure</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -370,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="77e79bcb" class="cell" data-execution_count="5">
+<div id="1e9bd74a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing Figure</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -392,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="b1ed2d98" class="cell" data-execution_count="6">
+<div id="9ded7e4d" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initializing Figure</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -417,8 +418,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="correlations" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="correlations"><span class="header-section-number">3.3</span> Correlations</h2>
+<section id="change-over-time" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="change-over-time"><span class="header-section-number">3.3</span> Change Over Time</h2>
+<div id="a558c9ae" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Melting dfs</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>s1 <span class="op">=</span> data[data[<span class="st">"Season"</span>] <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>s1_melted <span class="op">=</span> s1.melt(id_vars <span class="op">=</span> <span class="st">'Date'</span>, value_vars <span class="op">=</span> [<span class="st">'Prop_Jump_Low'</span>, <span class="st">'Prop_Jump_Med'</span>, <span class="st">'Prop_Jump_High'</span>], var_name <span class="op">=</span> <span class="st">'Jump Band'</span>, value_name <span class="op">=</span> <span class="st">'Proportion'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>s2 <span class="op">=</span> data[data[<span class="st">"Season"</span>] <span class="op">==</span> <span class="dv">2</span>]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>s2_melted <span class="op">=</span> s2.melt(id_vars <span class="op">=</span> <span class="st">'Date'</span>, value_vars <span class="op">=</span> [<span class="st">'Prop_Jump_Low'</span>, <span class="st">'Prop_Jump_Med'</span>, <span class="st">'Prop_Jump_High'</span>], var_name <span class="op">=</span> <span class="st">'Jump Band'</span>, value_name <span class="op">=</span> <span class="st">'Proportion'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating Figure and Flattening Axes</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize <span class="op">=</span> (<span class="dv">30</span>, <span class="dv">10</span>), sharey <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>axs <span class="op">=</span> axs.flatten()</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Looping through subplots, dfs, and seasons</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, df, s <span class="kw">in</span> <span class="bu">zip</span>(axs, [s1_melted, s2_melted], [<span class="dv">1</span>, <span class="dv">2</span>]):</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    plot <span class="op">=</span> sns.lineplot(df, x <span class="op">=</span> <span class="st">'Date'</span>, y <span class="op">=</span> <span class="st">'Proportion'</span>, hue <span class="op">=</span> <span class="st">'Jump Band'</span>, errorbar <span class="op">=</span> (<span class="st">'ci'</span>, <span class="va">False</span>), ax <span class="op">=</span> ax)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f"Season </span><span class="sc">{</span>s<span class="sc">}</span><span class="ss"> Jump Band Proportions over Time"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Date"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Proportion"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing plot</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="eda_files/figure-html/cell-8-output-1.png" width="2300" height="819" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="correlations" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="correlations"><span class="header-section-number">3.4</span> Correlations</h2>
 
 
 </section>
