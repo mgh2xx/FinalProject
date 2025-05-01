@@ -21,10 +21,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,6 +103,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -145,8 +182,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link active" data-scroll-target="#descriptive-statistics"><span class="header-section-number">3.1</span> Descriptive Statistics</a></li>
+  <li><a href="#distributions" id="toc-distributions" class="nav-link" data-scroll-target="#distributions"><span class="header-section-number">3.2</span> Distributions</a></li>
+  <li><a href="#correlations" id="toc-correlations" class="nav-link" data-scroll-target="#correlations"><span class="header-section-number">3.3</span> Correlations</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -170,8 +215,216 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<div id="149571d6" class="cell" data-message="false" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">About</th>
+<th data-quarto-table-cell-role="th">Period</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Low Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Med Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count High Band</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_Low</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_Med</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_High</th>
+<th data-quarto-table-cell-role="th">Season</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2022-11-07</td>
+<td>Athlete A</td>
+<td>Game</td>
+<td>16</td>
+<td>6</td>
+<td>9</td>
+<td>0.516129</td>
+<td>0.193548</td>
+<td>0.290323</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2022-11-07</td>
+<td>Athlete C</td>
+<td>Game</td>
+<td>29</td>
+<td>14</td>
+<td>6</td>
+<td>0.591837</td>
+<td>0.285714</td>
+<td>0.122449</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2022-11-07</td>
+<td>Athlete D</td>
+<td>Game</td>
+<td>35</td>
+<td>11</td>
+<td>22</td>
+<td>0.514706</td>
+<td>0.161765</td>
+<td>0.323529</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>2022-11-07</td>
+<td>Athlete F</td>
+<td>Game</td>
+<td>24</td>
+<td>14</td>
+<td>15</td>
+<td>0.452830</td>
+<td>0.264151</td>
+<td>0.283019</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>2022-11-07</td>
+<td>Athlete G</td>
+<td>Game</td>
+<td>49</td>
+<td>28</td>
+<td>23</td>
+<td>0.490000</td>
+<td>0.280000</td>
+<td>0.230000</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="descriptive-statistics" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">3.1</span> Descriptive Statistics</h2>
+<div id="01120334" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data.iloc[:, :<span class="op">-</span><span class="dv">1</span>].describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Low Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count Med Band</th>
+<th data-quarto-table-cell-role="th">IMA Jump Count High Band</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_Low</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_Med</th>
+<th data-quarto-table-cell-role="th">Prop_Jump_High</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>528</td>
+<td>528.000000</td>
+<td>528.000000</td>
+<td>528.000000</td>
+<td>527.000000</td>
+<td>527.000000</td>
+<td>527.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>2023-07-29 09:24:32.727272704</td>
+<td>27.371212</td>
+<td>13.712121</td>
+<td>11.892045</td>
+<td>0.512964</td>
+<td>0.261650</td>
+<td>0.225386</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">min</td>
+<td>2022-11-07 00:00:00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.227273</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>2023-01-28 00:00:00</td>
+<td>17.000000</td>
+<td>9.000000</td>
+<td>6.000000</td>
+<td>0.448276</td>
+<td>0.206116</td>
+<td>0.170732</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>2023-11-06 00:00:00</td>
+<td>25.000000</td>
+<td>13.000000</td>
+<td>11.000000</td>
+<td>0.507937</td>
+<td>0.258621</td>
+<td>0.225000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>2024-01-13 00:00:00</td>
+<td>35.000000</td>
+<td>18.000000</td>
+<td>16.000000</td>
+<td>0.580331</td>
+<td>0.314006</td>
+<td>0.283300</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">max</td>
+<td>2024-03-09 00:00:00</td>
+<td>92.000000</td>
+<td>45.000000</td>
+<td>42.000000</td>
+<td>0.788462</td>
+<td>0.566667</td>
+<td>0.500000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">std</td>
+<td>NaN</td>
+<td>14.456323</td>
+<td>7.042598</td>
+<td>7.108918</td>
+<td>0.100650</td>
+<td>0.081823</td>
+<td>0.092229</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="distributions" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="distributions"><span class="header-section-number">3.2</span> Distributions</h2>
+</section>
+<section id="correlations" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="correlations"><span class="header-section-number">3.3</span> Correlations</h2>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

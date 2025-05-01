@@ -3,3 +3,36 @@ title: "Exploratory Data Analysis"
 format: html
 ---
 
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Imports
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import warnings
+
+# Loading in data
+data = pd.read_csv('./data/cleaned_data.csv')
+
+# Converting date to datetime
+data["Date"] = pd.to_datetime(data["Date"])
+data.head()
+```
+
+## Descriptive Statistics
+```{python}
+data.iloc[:, :-1].describe()
+```
+## Distributions
+```{python}
+
+```
+
+## Correlations
+```{python}
+
+```

@@ -37,7 +37,7 @@ data = pd.concat([s1, s2])
 data["Date"] = pd.to_datetime(data["Date"])
 
 # List of Variables Relevant to our Project
-columns_of_interest = ["Date", "About", "Period", "Player Load Per Minute", "IMA Accel Low", "IMA Accel High", "IMA Accel Total", "IMA Jump Count Low Band", "IMA Jump Count Med Band", "IMA Jump Count High Band", "Season"]
+columns_of_interest = ["Date", "About", "Period", "IMA Jump Count Low Band", "IMA Jump Count Med Band", "IMA Jump Count High Band", "Season"]
 
 # Filtering data frame to include only relevant variables
 data = data[columns_of_interest]
@@ -88,10 +88,6 @@ full_games = games[games['Half Count'] == 2]
 # Aggregating the values
 games_agg = full_games.groupby(['Date', 'About', 'Season'], as_index = False).agg(
     {
-    'Player Load Per Minute': 'mean',
-    'IMA Accel Low': 'sum',
-    'IMA Accel High': 'sum',
-    'IMA Accel Total' : 'sum',
     'IMA Jump Count Low Band' : 'sum',
     'IMA Jump Count Med Band' : 'sum',
     'IMA Jump Count High Band' : 'sum',
@@ -101,7 +97,7 @@ games_agg = full_games.groupby(['Date', 'About', 'Season'], as_index = False).ag
 games_agg['Period'] = 'Game'
 
 # Re-ordering columns
-columns = ['Date', 'About', 'Period', 'Player Load Per Minute', 'IMA Accel Low', 'IMA Accel High', 'IMA Accel Total', 'IMA Jump Count Low Band', 'IMA Jump Count Med Band', 'IMA Jump Count High Band', 'Season']
+columns = ['Date', 'About', 'Period', 'IMA Jump Count Low Band', 'IMA Jump Count Med Band', 'IMA Jump Count High Band', 'Season']
 games_agg = games_agg[columns]
 
 # Showing row of df
@@ -113,17 +109,20 @@ games_agg.head(1)
 Lastly, proportion versions of the cumulative statistics tracked by Catapult were added to the data set. Because playing time varies greatly by player, using cumulative totals would have been misleading, so this allows for the proportion of each statistic to be examined. The final data set is then saved into the data folder to be used for EDA and visualization.
 
 ```{python}
-# Concatenating the games and scrimmage data frames back into one data frame
+# Reassigning the main data frame as the working games df
 data = games_agg
 
-# Making variables to hold high accel and jump proportions
-data["Prop_Accel_High"] = data["IMA Accel High"] / data["IMA Accel Total"]
+# Making variables to hold  jump proportions
 data["Prop_Jump_High"] = data["IMA Jump Count High Band"] / (data["IMA Jump Count High Band"] + data["IMA Jump Count Low Band"] + data["IMA Jump Count Med Band"])
 data["Prop_Jump_Med"] = data["IMA Jump Count Med Band"] / (data["IMA Jump Count High Band"] + data["IMA Jump Count Low Band"] + data["IMA Jump Count Med Band"])
 data["Prop_Jump_Low"] = data["IMA Jump Count Low Band"] / (data["IMA Jump Count High Band"] + data["IMA Jump Count Low Band"] + data["IMA Jump Count Med Band"])
 
 # Getting rid of Ben Vander Plas, who presumably shouldn't have his name in the data
 data = data[data["About"] != "Ben Vander Plas"]
+
+# Re-ordering columns
+columns = ['Date', 'About', 'Period', 'IMA Jump Count Low Band', 'IMA Jump Count Med Band', 'IMA Jump Count High Band', "Prop_Jump_Low", "Prop_Jump_Med", "Prop_Jump_High", 'Season']
+data = data[columns]
 
 # Saving the cleaned data
 data.to_csv('./data/cleaned_data.csv', index = False)
