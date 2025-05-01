@@ -20,16 +20,80 @@ data = pd.read_csv('./data/cleaned_data.csv')
 
 # Converting date to datetime
 data["Date"] = pd.to_datetime(data["Date"])
-data.head()
 ```
 
 ## Descriptive Statistics
+
 ```{python}
 data.iloc[:, :-1].describe()
 ```
-## Distributions
-```{python}
 
+## Distributions
+
+```{python}
+# Initializing Figure
+plt.figure(figsize = (10, 6))
+
+# Histogram and KDE of Low Band Jump Proportion
+sns.histplot(data['Prop_Jump_Low'], kde = True)
+
+# Adding title and axis labels
+plt.title("Distribution of Low Band Jump Proportions")
+plt.xlabel("Low Band Jump Proportion")
+plt.ylabel("Frequency")
+
+# Showing Plot
+plt.show()
+```
+
+```{python}
+# Initializing Figure
+plt.figure(figsize = (10, 6))
+
+# Histogram and KDE of Medium Band Jump Proportion
+sns.histplot(data['Prop_Jump_Med'], kde = True)
+
+# Adding title and axis labels
+plt.title("Distribution of Medium Band Jump Proportions")
+plt.xlabel("Medium Band Jump Proportion")
+plt.ylabel("Frequency")
+
+# Showing Plot
+plt.show()
+```
+
+```{python}
+# Initializing Figure
+plt.figure(figsize = (10, 6))
+
+# Histogram and KDE of High Band Jump Proportion
+sns.histplot(data['Prop_Jump_High'], kde = True)
+
+# Adding title and axis labels
+plt.title("Distribution of High Band Jump Proportions")
+plt.xlabel("High Band Jump Proportion")
+plt.ylabel("Frequency")
+
+# Showing Plot
+plt.show()
+```
+
+```{python}
+# Initializing Figure
+plt.figure(figsize = (10, 6))
+
+# Melting data frame
+data_melted = data.melt(value_vars = ['Prop_Jump_Low', 'Prop_Jump_Med', 'Prop_Jump_High'], var_name = 'Band', value_name = 'Proportion')
+
+# Box Plot of Jump Counts by Band
+sns.boxplot(x = 'Band', y = 'Proportion', data = data_melted)
+
+# Adding title
+plt.title("Distribution of Jump Proportions by Band")
+plt.xticks()
+
+# Showing plot
+plt.show()
 ```
 
 ## Correlations
