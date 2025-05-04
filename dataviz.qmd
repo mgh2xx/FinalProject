@@ -72,10 +72,11 @@ players_in_both = players_seasons[players_seasons > 1].index.tolist()
 players = rolling_df['About'].unique()
 
 # Making a palette where players in 1 season are orange, and players in 2 seasons are navy
-palette = {player : ('orange' if player in players_in_both else 'lightgray') for player in players}
+palette = {player : ('navy' if player in players_in_both else 'orange') for player in players}
 ```
 
 ### Generating and Saving Visualization 1
+
 ```{python}
 # Creating Figure and Flattening Axes
 fig, axs = plt.subplots(1, 2, figsize = (30, 10), sharey = True)
@@ -85,18 +86,21 @@ axs = axs.flatten()
 for ax, season in zip(axs, [1, 2]):
     # Making plot of proportion of jumps in high band by player, for each season
     plot = sns.lineplot(data = rolling_df[rolling_df["Season"] == season], x = 'Date', y = "Prop_Jump_High", hue = "About", palette = palette, ax = ax)
-    plot_c = sns.lineplot(data = rolling_df[(rolling_df["Season"] == season) & (rolling_df["About"] == "Athlete C")], x = "Date", y = "Prop_Jump_High", color = 'navy', ax = ax)
-    ax.set_title(f"Season {season} Rolling Average of High-Band Jump Proportion", weight = 'bold')
-    sns.despine(top = True, right = True, ax = ax)
-
-one_season_patch = mpatches.Patch(color = 'lightgray', label = 'One Season')
-two_season_patch = mpatches.Patch(color = 'orange', label = 'Two Seasons')
-athlete_c_patch = mpatches.Patch(color = "navy", label = "Athlete C")
-
-for ax in axs:
-    ax.legend(handles = [one_season_patch, two_season_patch, athlete_c_patch], title = 'Player Seasons', loc = 'upper right')
+    plot_c = sns.lineplot(data = rolling_df[(rolling_df["Season"] == season) & (rolling_df["About"] == "Athlete C")], x = "Date", y = "Prop_Jump_High", color = 'lightblue', ax = ax)
+    ax.set_title(f"Season {season}", weight = 'bold')
+    ax.set_ylabel('')# Proportion of High-Band Jumps
+    ax.legend_.remove()
+    sns.despine(ax=ax, top=True, right=True, left=False, bottom=False)
+    ax.tick_params(axis='both', which='both', length=0, width=0)
 
 # Showing plots
+fig.text(0.29, 0.95, 'High-Band Jump Trends by Player: Comparing', fontsize=20, rotation='horizontal', weight='bold')
+fig.text(0.53, 0.95, 'One-Season', fontsize=20, rotation='horizontal', weight='bold', color='orange')
+fig.text(0.594, 0.95, 'vs', fontsize=20, rotation='horizontal', weight='bold')
+fig.text(0.608, 0.95, 'Two-Season', fontsize=20, rotation='horizontal', weight='bold', color='navy')
+fig.text(0.6715, 0.95, 'Tenure', fontsize=20, rotation='horizontal', weight='bold')
+fig.text(0.11, 0.89, 'Proportion', fontsize=10, rotation='horizontal', weight='normal')
+plt.subplots_adjust(wspace=0.05)  # Decrease this value to move subplots closer
 plt.savefig("./images/viz_1.png", bbox_inches='tight')
 plt.show()
 ```
