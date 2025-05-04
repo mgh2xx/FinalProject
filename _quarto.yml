@@ -5,12 +5,12 @@ project:
 book:
   title: "Sustaining Success: Rethinking Recruitment Through Player Development Data"
   author: "Brian Hockett, Ian Kariuki, Conor Gibbons, Kalenga Mumba"
-  #favicon: logo that goes on tab
+  favicon: "./images/sds.png"
   description: Description
   keyword: data science, communicating,
   #url: deployment_url
   sidebar:
-    #logo: a logo
+    logo: "./images/sds.png"
     search: true
   repo-url: https://github.com/mgh2xx/FinalProject
   repo-branch: master
