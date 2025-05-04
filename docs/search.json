@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Report Title",
     "section": "",
-    "text": "1 Report",
+    "text": "Report",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Report</span>"
     ]
@@ -13,8 +13,8 @@
     "objectID": "index.html#prepared-for",
     "href": "index.html#prepared-for",
     "title": "Report Title",
-    "section": "1.1 Prepared For",
-    "text": "1.1 Prepared For",
+    "section": "Prepared For",
+    "text": "Prepared For",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Report</span>"
     ]
@@ -23,8 +23,8 @@
     "objectID": "index.html#problem-statement",
     "href": "index.html#problem-statement",
     "title": "Report Title",
-    "section": "1.2 Problem Statement",
-    "text": "1.2 Problem Statement",
+    "section": "Problem Statement",
+    "text": "Problem Statement",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Report</span>"
     ]
@@ -33,8 +33,8 @@
     "objectID": "index.html#analysis",
     "href": "index.html#analysis",
     "title": "Report Title",
-    "section": "1.3 Analysis",
-    "text": "1.3 Analysis",
+    "section": "Analysis",
+    "text": "Analysis",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Report</span>"
     ]
@@ -43,8 +43,8 @@
     "objectID": "index.html#conclusion",
     "href": "index.html#conclusion",
     "title": "Report Title",
-    "section": "1.4 Conclusion",
-    "text": "1.4 Conclusion",
+    "section": "Conclusion",
+    "text": "Conclusion",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Report</span>"
     ]
@@ -164,7 +164,7 @@
     "href": "dataviz.html#making-visualization-2",
     "title": "4  Data Visualization",
     "section": "4.2 Making Visualization 2",
-    "text": "4.2 Making Visualization 2\n\n4.2.1 Creating “Adjusted_Day” Variable\n\n# Making a new variable which tells whether or not the player is in both seasons or just one\nrolling_df['Player_Group'] = rolling_df['About'].apply(lambda x: 'both_seasons' if x in players_in_both else 'one_season')\n\n# Getting the start date for each season\nseason_starts = rolling_df.groupby('Season')['Date'].min().to_dict()\n\n# Getting the number of days into the season for each season\nrolling_df['Day_of_Season'] = rolling_df.apply(lambda row: (row['Date'] - season_starts[row['Season']]).days + 1, axis=1)\n\n# Getting last day of season 1\nseason1_length = (rolling_df[rolling_df['Season'] == 1]['Date'].max() - season_starts[1]).days + 1\n\n# Function adds the number of days in the first season to the day in the second season\n    # This prevents for example the 5th day in the second season and the 5th day in the first season being seen as the same day\ndef adjust_day(row):\n    if row['Player_Group'] == 'both_seasons' and row['Season'] == 2:\n        return row['Day_of_Season'] + season1_length\n    else:\n        return row['Day_of_Season']\n\n# Adding the first season length to the second seasons\nrolling_df['Adjusted_Day'] = rolling_df.apply(adjust_day, axis=1)\n\n\n\n4.2.2 Generating and Saving Visualization\n\n# Filter for Athlete C\nAthlete_C = rolling_df[rolling_df[\"About\"] == \"Athlete C\"]\n\n# Plot both seasons on a single real-time timeline using Adjusted_Day\nplt.figure(figsize=(14, 6))\n\nsns.lineplot(data=Athlete_C, x='Adjusted_Day', y='Prop_Jump_High', marker='o', color='navy', label='High')\nsns.lineplot(data=Athlete_C, x='Adjusted_Day', y='Prop_Jump_Low', marker='o', color='orange', label='Low')\n\n# Optional: draw line at the transition between Season 1 and Season 2\nseason1_len = (rolling_df[rolling_df['Season'] == 1]['Date'].max() - rolling_df[rolling_df['Season'] == 1]['Date'].min()).days + 1\nplt.axvline(season1_len, linestyle='--', color='lightgray', label='Season Break')\n\nplt.title(\"Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)\", fontsize=16)\nplt.xlabel(\"Adjusted Day\")\nplt.ylabel(\"Proportion of Jumps\")\nplt.legend(title='Jump Band')\nplt.tight_layout()\nplt.show()",
+    "text": "4.2 Making Visualization 2\n\n4.2.1 Creating “Adjusted_Day” Variable\n\n# Making a new variable which tells whether or not the player is in both seasons or just one\nrolling_df['Player_Group'] = rolling_df['About'].apply(lambda x: 'both_seasons' if x in players_in_both else 'one_season')\n\n# Getting the start date for each season\nseason_starts = rolling_df.groupby('Season')['Date'].min().to_dict()\n\n# Getting the number of days into the season for each season\nrolling_df['Day_of_Season'] = rolling_df.apply(lambda row: (row['Date'] - season_starts[row['Season']]).days + 1, axis=1)\n\n# Getting last day of season 1\nseason1_length = (rolling_df[rolling_df['Season'] == 1]['Date'].max() - season_starts[1]).days + 1\n\n# Function adds the number of days in the first season to the day in the second season\n    # This prevents for example the 5th day in the second season and the 5th day in the first season being seen as the same day\ndef adjust_day(row):\n    if row['Player_Group'] == 'both_seasons' and row['Season'] == 2:\n        return row['Day_of_Season'] + season1_length\n    else:\n        return row['Day_of_Season']\n\n# Adding the first season length to the second seasons\nrolling_df['Adjusted_Day'] = rolling_df.apply(adjust_day, axis=1)\n\n\n\n4.2.2 Generating and Saving Visualization 2\n\n# Filter for Athlete C\nAthlete_C = rolling_df[rolling_df[\"About\"] == \"Athlete C\"]\n\n# Plot both seasons on a single real-time timeline using Adjusted_Day\nplt.figure(figsize=(14, 6))\n\nsns.lineplot(data=Athlete_C, x='Adjusted_Day', y='Prop_Jump_High', marker='o', color='navy', label='High')\nsns.lineplot(data=Athlete_C, x='Adjusted_Day', y='Prop_Jump_Low', marker='o', color='orange', label='Low')\n\n# Optional: draw line at the transition between Season 1 and Season 2\nseason1_len = (rolling_df[rolling_df['Season'] == 1]['Date'].max() - rolling_df[rolling_df['Season'] == 1]['Date'].min()).days + 1\nplt.axvline(season1_len, linestyle='--', color='lightgray', label='Season Break')\n\nplt.title(\"Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)\", fontsize=16)\nplt.xlabel(\"Adjusted Day\")\nplt.ylabel(\"Proportion of Jumps\")\nplt.legend(title='Jump Band')\nplt.tight_layout()\nplt.show()",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Data Visualization</span>"
     ]

@@ -130,7 +130,7 @@ def adjust_day(row):
 rolling_df['Adjusted_Day'] = rolling_df.apply(adjust_day, axis=1)
 ```
 
-### Generating and Saving Visualization
+### Generating and Saving Visualization 2
 ```{python}
 # Filter for Athlete C
 Athlete_C = rolling_df[rolling_df["About"] == "Athlete C"]

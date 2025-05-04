@@ -1,6 +1,8 @@
 ---
 title: "Report"
-format: html
+format: 
+    html:
+        number-sections: false
 ---
 
 # Report
