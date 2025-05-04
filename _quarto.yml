@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Report Title"
+  title: "Sustaining Success: Rethinking Recruitment Through Player Development Data"
   author: "Brian Hockett, Ian Kariuki, Conor Gibbons, Kalenga Mumba"
   #favicon: logo that goes on tab
   description: Description
@@ -30,7 +30,9 @@ format:
       light: minty
     code-fold: false
     backgroundcolor: "#FFFFFF"
-    css: styles.css
+    page-layout: full
+
+    
 
 
 
