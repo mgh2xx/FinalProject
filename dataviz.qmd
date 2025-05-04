@@ -99,6 +99,7 @@ for ax in axs:
 
 # Showing plots
 plt.show()
+plt.savefig("./images/viz_1.png")
 ```
 
 ## Making Visualization 2
@@ -153,6 +154,7 @@ plt.tight_layout()
 plt.gca().tick_params(axis = 'both', length = 0)
 sns.despine(top = True, right = True)
 plt.show()
+plt.savefig("./images/viz_2.png")
 ```
 
 ## Making Visualization 3
@@ -191,8 +193,6 @@ palette = {
     "one_season" : "orange"
 }
 
-
-
 # Making linear regression plot of prop_jump_high by # seasons played
 plot = sns.lmplot(
     data = daily_means,
@@ -218,4 +218,5 @@ plt.text(150, 0.195, "One Season", color = "orange", weight = 'bold')
 plt.gca().tick_params(axis = 'both', length = 0)
 plot._legend.remove()
 plt.show()
+plt.savefig("./images/viz_3.png")
 ```
