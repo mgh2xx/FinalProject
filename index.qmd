@@ -20,18 +20,14 @@ Our report will examine how a player’s physical development evolves over one o
 
 ## Analysis
 
-#### Visualization #1
 ![](./images/viz_1.png)
 
 When examining the high-band jump proportions of top players across both seasons, the one-season player group shows notable volatility, with no consistent upward trend. In contrast, players who returned for a second season exhibited steady and continued improvement in jump intensity. This suggests that meaningful gains in explosive performance tend to emerge only after a second season of training or competition.
 
-
-#### Visualization #2
 ![](./images/viz_2.png)
 
 Narrowing the focus on Athlete C’s data over the two seasons, it’s clear that he has shown significant continued growth in jump performance. This is highlighted by the steady increase of high-band proportion, which plateaus towards the latter half of the first season, but then reignites its growth throughout the duration of the second season.
 
-#### Visualization #3
 ![](./images/viz_3.png)
 
 Examining the change in the mean proportion of jumps in the high band by day for one- and two-season players, it is clear that the two-season players have shown the greatest change in the mean proportion of jumps in the high band, further contributing to their improved performance. This is demonstrated by the steady increase in the proportion of jumps as the graph continues day by day without decreasing. Additionally, there is also a positive correlation occurring between days 50-100, indicating that there is a strong relationship between the proportion of recorded jumps per day.

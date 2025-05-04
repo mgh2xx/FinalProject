@@ -8,13 +8,12 @@ book:
   favicon: "./images/sds.png"
   description: Description
   keyword: data science, communicating,
-  #url: deployment_url
+  url: https://mgh2xx.github.io/FinalProject/
   sidebar:
     logo: "./images/sds.png"
     search: true
   repo-url: https://github.com/mgh2xx/FinalProject
   repo-branch: master
-  #image: an image
   
   chapters:
     - index.qmd
