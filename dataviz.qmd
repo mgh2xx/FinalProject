@@ -60,7 +60,6 @@ player_games = rolling_df["About"].value_counts()
 players_met_min_games = player_games[player_games >= 15].index
 # Limiting rolling_df to only players in the list of players who have played 15 games
 rolling_df = rolling_df[rolling_df["About"].isin(players_met_min_games)]
-print(len(rolling_df["About"].unique()))
 ```
 
 ### Creating Visualization 1 Color Palette
@@ -98,7 +97,7 @@ for ax in axs:
     ax.legend(handles = [one_season_patch, two_season_patch, athlete_c_patch], title = 'Player Seasons', loc = 'upper right')
 
 # Showing plots
-plt.savefig("./images/viz_1.png")
+plt.savefig("./images/viz_1.png", bbox_inches='tight')
 plt.show()
 ```
 
@@ -147,8 +146,9 @@ season1_len = (rolling_df[rolling_df['Season'] == 1]['Date'].max() - rolling_df[
 plt.axvline(season1_len, linestyle='--', color='lightgray', label='Season Break')
 
 #plt.title("Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)", fontsize=16)
-plt.suptitle('Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)'
-             , x = 0.275, y = 1.05, weight = "bold")
+plt.suptitle('Athlete C Sees Significant Change in Jump-Band Proportions Over the Course of 2 Seasons'
+             , x = 0.33, y = 0.965, weight = "bold")
+plt.title("The two seasons Athlete C spends in the program results in notable growth in high-band jump proportion and decrease in the low-band jump proportion", ha = "left", fontsize = 10, x = 0, y = 1.075)
 plt.text(276, 0.33, "High Band", color = "navy", weight = "bold")
 plt.text(276, 0.3875, "Low Band", color = "orange", weight = "bold")
 plt.text(60, 0.55, "Season 1", color = "gray", weight = "bold")
@@ -162,7 +162,7 @@ plt.tight_layout()
 plt.gca().tick_params(axis = 'both', length = 0)
 sns.despine(top = True, right = True)
 plt.gca().get_legend().remove()
-plt.savefig("./images/viz_2.png")
+plt.savefig("./images/viz_2.png", bbox_inches='tight')
 plt.show()
 ```
 
@@ -215,17 +215,17 @@ plot = sns.lmplot(
     aspect = 2
 )
 
-plt.axvline(x = season1_length, color = 'lightgray', linestyle = '--', label = "Season Break")
-plt.suptitle('Change in Mean Proportion of Jumps in High Band by Day for One and Two Season Players'
-             , x = 0.375, y = 1.09, weight = "bold")
+plt.suptitle('Two-Season Players See Positive Growth in High-Band Jump Proportions'
+             , x = 0.305, y = 1.125, weight = "bold")
+plt.title("On average, players with 2 seasons of data increased their proportion of jumps in the high band, while 1-season players\nsaw an average decrease (likely due to fatigue, not regression).", x = 0, y = 1.055, ha = "left", fontsize = 10)
 plt.xlabel('Adjusted Day', weight = 'bold')
-plt.text(-15, 0.3225, "Mean Proportion of Jumps in High Band", weight = "bold")
+plt.text(-15, 0.32, "Mean Proportion of Jumps in High Band", weight = "bold")
 #plt.ylabel('Mean Proportion of Jumps in High Band')
 plt.ylabel('')
 plt.text(275, 0.259, "Two Seasons", color = "navy", weight = 'bold')
 plt.text(150, 0.195, "One Season", color = "orange", weight = 'bold')
 plt.gca().tick_params(axis = 'both', length = 0)
 plot._legend.remove()
-plt.savefig("./images/viz_3.png")
+plt.savefig("./images/viz_3.png", bbox_inches='tight')
 plt.show()
 ```
