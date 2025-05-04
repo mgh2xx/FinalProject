@@ -127,5 +127,18 @@ plt.show()
 
 ## Correlations
 ```{python}
+# Making figure
+plt.figure()
 
+# Making correlation matrix
+corr_matrix = data.iloc[:, list(range(3, 10))].corr()
+
+# Making heatmap using correlation matrix
+sns.heatmap(corr_matrix, annot = True, cmap = "coolwarm", fmt = ".2f")
+
+# Adding title
+plt.title("Correlation Heatmap", weight = "bold", fontsize = 12)
+
+# Showing plot
+plt.show()
 ```

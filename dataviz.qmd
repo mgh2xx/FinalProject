@@ -150,6 +150,8 @@ plt.xlabel("Adjusted Day")
 plt.ylabel("Proportion of Jumps")
 plt.legend(title='Jump Band')
 plt.tight_layout()
+plt.gca().tick_params(axis = 'both', length = 0)
+sns.despine(top = True, right = True)
 plt.show()
 ```
 
@@ -190,7 +192,7 @@ palette = {
 }
 
 # Making linear regression plot of prop_jump_high by # seasons played
-sns.lmplot(
+plot = sns.lmplot(
     data = daily_means,
     x = 'Adjusted_Day',
     y = 'Prop_Jump_High',
@@ -203,8 +205,15 @@ sns.lmplot(
 )
 
 plt.axvline(x = season1_length, color = 'lightgray', linestyle = '--', label = "Season Break")
-plt.title('Change in Mean Proportion of Jumps in High Band by Day for One and Two Season Players')
-plt.xlabel('Adjusted Day')
-plt.ylabel('Mean Proportion of Jumps in High Band')
+plt.suptitle('Change in Mean Proportion of Jumps in High Band by Day for One and Two Season Players'
+             , x = 0.375, y = 1.09, weight = "bold")
+plt.xlabel('Adjusted Day', weight = 'bold')
+plt.text(15, 0.32, "Mean Proportion of Jumps in High Band", ha = 'center', weight = "bold")
+#plt.ylabel('Mean Proportion of Jumps in High Band')
+plt.ylabel('')
+plt.text(275, 0.259, "Two Seasons", color = "navy", weight = 'bold')
+plt.text(150, 0.195, "One Season", color = "orange", weight = 'bold')
+plt.gca().tick_params(axis = 'both', length = 0)
+plot._legend.remove()
 plt.show()
 ```
