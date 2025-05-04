@@ -146,13 +146,22 @@ sns.lineplot(data=Athlete_C, x='Adjusted_Day', y='Prop_Jump_Low', marker='o', co
 season1_len = (rolling_df[rolling_df['Season'] == 1]['Date'].max() - rolling_df[rolling_df['Season'] == 1]['Date'].min()).days + 1
 plt.axvline(season1_len, linestyle='--', color='lightgray', label='Season Break')
 
-plt.title("Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)", fontsize=16)
-plt.xlabel("Adjusted Day")
-plt.ylabel("Proportion of Jumps")
-plt.legend(title='Jump Band')
+#plt.title("Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)", fontsize=16)
+plt.suptitle('Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)'
+             , x = 0.275, y = 1.05, weight = "bold")
+plt.text(276, 0.33, "High Band", color = "navy", weight = "bold")
+plt.text(276, 0.3875, "Low Band", color = "orange", weight = "bold")
+plt.text(60, 0.55, "Season 1", color = "gray", weight = "bold")
+plt.text(180, 0.55, "Season 2", color = "gray", weight = "bold")
+plt.xlabel("Adjusted Day", weight = "bold")
+plt.text(-15, 0.625, "Proportion of Jumps", weight = "bold")
+plt.ylabel("")
+#plt.ylabel("Proportion of Jumps")
+#plt.legend(title='Jump Band')
 plt.tight_layout()
 plt.gca().tick_params(axis = 'both', length = 0)
 sns.despine(top = True, right = True)
+plt.gca().get_legend().remove()
 plt.show()
 plt.savefig("./images/viz_2.png")
 ```
@@ -210,7 +219,7 @@ plt.axvline(x = season1_length, color = 'lightgray', linestyle = '--', label = "
 plt.suptitle('Change in Mean Proportion of Jumps in High Band by Day for One and Two Season Players'
              , x = 0.375, y = 1.09, weight = "bold")
 plt.xlabel('Adjusted Day', weight = 'bold')
-plt.text(15, 0.32, "Mean Proportion of Jumps in High Band", ha = 'center', weight = "bold")
+plt.text(-15, 0.3225, "Mean Proportion of Jumps in High Band", weight = "bold")
 #plt.ylabel('Mean Proportion of Jumps in High Band')
 plt.ylabel('')
 plt.text(275, 0.259, "Two Seasons", color = "navy", weight = 'bold')
@@ -218,5 +227,4 @@ plt.text(150, 0.195, "One Season", color = "orange", weight = 'bold')
 plt.gca().tick_params(axis = 'both', length = 0)
 plot._legend.remove()
 plt.show()
-plt.savefig("./images/viz_3.png")
 ```
