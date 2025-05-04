@@ -192,7 +192,7 @@ palette = {
 }
 
 # Making linear regression plot of prop_jump_high by # seasons played
-plot = sns.lmplot(
+sns.lmplot(
     data = daily_means,
     x = 'Adjusted_Day',
     y = 'Prop_Jump_High',
@@ -214,6 +214,6 @@ plt.ylabel('')
 plt.text(275, 0.259, "Two Seasons", color = "navy", weight = 'bold')
 plt.text(150, 0.195, "One Season", color = "orange", weight = 'bold')
 plt.gca().tick_params(axis = 'both', length = 0)
-plot._legend.remove()
+#plot._legend.remove()
 plt.show()
 ```
