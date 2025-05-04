@@ -9,7 +9,7 @@ The data for this report is taken from the Catapult wearable used by the Univers
 
 ## Loading in the Data
 
-This code chunk loads in the catapult data for each season from the data folder. Then, data from each season is marked with a season indicator column, before being combined into a single season. Next, the columns of the data are limited to the variables relevant for this study.
+This code chunk loads in the catapult data for each season from the data folder. Then, data from each season is marked with a season indicator column, before being combined into a single dataset. Next, the columns of the data are limited to the variables relevant for this study.
 
 ```{python}
 #| warning: false
@@ -48,7 +48,7 @@ data.head(1)
 
 ## Selecting the Game Data
 
-Next, the data set is limited to include only data from game periods. Overtime periods are removed from the data as well, to standardize the game length to two halves.
+Next, the dataset is limited to include only data from game periods. Overtime periods are removed from the data as well, to standardize the game length to two halves.
 
 ```{python}
 # Filtering to include 'Period' - the keyword for game periods
