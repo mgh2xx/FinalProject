@@ -6,7 +6,7 @@ book:
   title: "Sustaining Success: Rethinking Recruitment Through Player Development Data"
   author: "Brian Hockett, Ian Kariuki, Conor Gibbons, Kalenga Mumba"
   favicon: "./images/sds.png"
-  description: Description
+  description: Using Catapult jump intensity data from the UVA Men’s Basketball team to determine the best recruitment strategy for long-term success
   keyword: data science, communicating,
   url: https://mgh2xx.github.io/FinalProject/
   sidebar:
