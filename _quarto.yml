@@ -30,6 +30,7 @@ format:
       light: minty
     code-fold: false
     backgroundcolor: "#FFFFFF"
+    css: styles.css
 
 
 

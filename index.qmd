@@ -18,6 +18,6 @@ Our report will examine how a player’s physical development evolves over one o
 
 ## Analysis
 
-![Caption for your image](./images/viz_1.png)
+![](./images/viz_1.png)
 
 ## Conclusion
