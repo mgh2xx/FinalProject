@@ -191,7 +191,7 @@ palette = {
     "one_season" : "orange"
 }
 
-plt.figure()
+
 
 # Making linear regression plot of prop_jump_high by # seasons played
 plot = sns.lmplot(
