@@ -113,8 +113,8 @@ fig.text(0.365, 1, 'One-Season', fontsize=20, rotation='horizontal', weight='bol
 fig.text(0.429, 1, 'vs', fontsize=20, rotation='horizontal', weight='bold')
 fig.text(0.443, 1, 'Two-Season', fontsize=20, rotation='horizontal', weight='bold', color='navy')
 fig.text(0.506, 1, 'Tenure', fontsize=20, rotation='horizontal', weight='bold')
-plt.title("No clear trend appears amongst one-season players, whereas two-season players show growth in their second season, as highlighted by", x = -1.04, y = 1.1, fontsize = 12, ha = "left")
-fig.text(0.5115, 0.964, "Athlete C", color = "green", fontsize = 12)
+fig.text(0.125, 0.965, "No clear trend appears amongst one-season players, whereas two-season players show growth in their second season, as highlighted by", fontsize=12, ha="left")
+fig.text(0.51, 0.965, "Athlete C", color = "green", fontsize = 12)
 fig.text(0.125, 0.9, 'High-Band Proportion', fontsize=10, rotation='horizontal', weight='bold')
 plt.subplots_adjust(wspace=0.05)  # Decrease this value to move subplots closer
 plt.savefig("./images/viz_1.png", bbox_inches='tight')
