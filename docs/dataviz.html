@@ -233,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.1" class="anchored" data-anchor-id="making-visualization-1"><span class="header-section-number">4.1</span> Making Visualization 1</h2>
 <section id="getting-rolling-averages-for-visualization-1" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="getting-rolling-averages-for-visualization-1"><span class="header-section-number">4.1.1</span> Getting Rolling Averages for Visualization 1</h3>
-<div id="3ab2130c" class="cell" data-execution_count="2">
+<div id="0fafc987" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code chunk retrieves the n-game (7-game) rolling average of proportion of low, med, and high band jumps</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Empty list to hold rolling_averages data</span></span>
@@ -274,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="creating-visualization-1-color-palette" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="creating-visualization-1-color-palette"><span class="header-section-number">4.1.2</span> Creating Visualization 1 Color Palette</h3>
-<div id="ae3ae4ab" class="cell" data-execution_count="3">
+<div id="44241d1e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the number of seasons per player, and getting a list of players who are in both seasons</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>players_seasons <span class="op">=</span> rolling_df.groupby(<span class="st">'About'</span>)[<span class="st">'Season'</span>].nunique()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>players_in_both <span class="op">=</span> players_seasons[players_seasons <span class="op">&gt;</span> <span class="dv">1</span>].index.tolist()</span>
@@ -288,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="generating-and-saving-visualization-1" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="generating-and-saving-visualization-1"><span class="header-section-number">4.1.3</span> Generating and Saving Visualization 1</h3>
-<div id="0c4fc5a0" class="cell" data-execution_count="4">
+<div id="85661619" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating Figure and Flattening Axes</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize <span class="op">=</span> (<span class="dv">30</span>, <span class="dv">10</span>), sharey <span class="op">=</span> <span class="va">True</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>axs <span class="op">=</span> axs.flatten()</span>
@@ -309,17 +309,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    ax.legend(handles <span class="op">=</span> [one_season_patch, two_season_patch, athlete_c_patch], title <span class="op">=</span> <span class="st">'Player Seasons'</span>, loc <span class="op">=</span> <span class="st">'upper right'</span>)</span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing plots</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"./images/viz_1.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"./images/viz_1.png"</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="dataviz_files/figure-html/cell-5-output-1.png" width="2309" height="819" class="figure-img"></p>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -328,74 +325,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.2" class="anchored" data-anchor-id="making-visualization-2"><span class="header-section-number">4.2</span> Making Visualization 2</h2>
 <section id="creating-adjusted_day-variable" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="creating-adjusted_day-variable"><span class="header-section-number">4.2.1</span> Creating “Adjusted_Day” Variable</h3>
-<div id="df225c50" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Making a new variable which tells whether or not the player is in both seasons or just one</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>rolling_df[<span class="st">'Player_Group'</span>] <span class="op">=</span> rolling_df[<span class="st">'About'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'both_seasons'</span> <span class="cf">if</span> x <span class="kw">in</span> players_in_both <span class="cf">else</span> <span class="st">'one_season'</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the start date for each season</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>season_starts <span class="op">=</span> rolling_df.groupby(<span class="st">'Season'</span>)[<span class="st">'Date'</span>].<span class="bu">min</span>().to_dict()</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the number of days into the season for each season</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>rolling_df[<span class="st">'Day_of_Season'</span>] <span class="op">=</span> rolling_df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: (row[<span class="st">'Date'</span>] <span class="op">-</span> season_starts[row[<span class="st">'Season'</span>]]).days <span class="op">+</span> <span class="dv">1</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting last day of season 1</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>season1_length <span class="op">=</span> (rolling_df[rolling_df[<span class="st">'Season'</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">'Date'</span>].<span class="bu">max</span>() <span class="op">-</span> season_starts[<span class="dv">1</span>]).days <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Function adds the number of days in the first season to the day in the second season</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This prevents for example the 5th day in the second season and the 5th day in the first season being seen as the same day</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adjust_day(row):</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'Player_Group'</span>] <span class="op">==</span> <span class="st">'both_seasons'</span> <span class="kw">and</span> row[<span class="st">'Season'</span>] <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> row[<span class="st">'Day_of_Season'</span>] <span class="op">+</span> season1_length</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> row[<span class="st">'Day_of_Season'</span>]</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the first season length to the second seasons</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>rolling_df[<span class="st">'Adjusted_Day'</span>] <span class="op">=</span> rolling_df.<span class="bu">apply</span>(adjust_day, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6cd07f3c" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Making a new variable which tells whether or not the player is in both seasons or just one</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>rolling_df[<span class="st">'Player_Group'</span>] <span class="op">=</span> rolling_df[<span class="st">'About'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="st">'both_seasons'</span> <span class="cf">if</span> x <span class="kw">in</span> players_in_both <span class="cf">else</span> <span class="st">'one_season'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the start date for each season</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>season_starts <span class="op">=</span> rolling_df.groupby(<span class="st">'Season'</span>)[<span class="st">'Date'</span>].<span class="bu">min</span>().to_dict()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting the number of days into the season for each season</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>rolling_df[<span class="st">'Day_of_Season'</span>] <span class="op">=</span> rolling_df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: (row[<span class="st">'Date'</span>] <span class="op">-</span> season_starts[row[<span class="st">'Season'</span>]]).days <span class="op">+</span> <span class="dv">1</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Getting last day of season 1</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>season1_length <span class="op">=</span> (rolling_df[rolling_df[<span class="st">'Season'</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">'Date'</span>].<span class="bu">max</span>() <span class="op">-</span> season_starts[<span class="dv">1</span>]).days <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Function adds the number of days in the first season to the day in the second season</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This prevents for example the 5th day in the second season and the 5th day in the first season being seen as the same day</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adjust_day(row):</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'Player_Group'</span>] <span class="op">==</span> <span class="st">'both_seasons'</span> <span class="kw">and</span> row[<span class="st">'Season'</span>] <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> row[<span class="st">'Day_of_Season'</span>] <span class="op">+</span> season1_length</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> row[<span class="st">'Day_of_Season'</span>]</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding the first season length to the second seasons</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>rolling_df[<span class="st">'Adjusted_Day'</span>] <span class="op">=</span> rolling_df.<span class="bu">apply</span>(adjust_day, axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="generating-and-saving-visualization-2" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="generating-and-saving-visualization-2"><span class="header-section-number">4.2.2</span> Generating and Saving Visualization 2</h3>
-<div id="5e6eb2ef" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for Athlete C</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>Athlete_C <span class="op">=</span> rolling_df[rolling_df[<span class="st">"About"</span>] <span class="op">==</span> <span class="st">"Athlete C"</span>]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot both seasons on a single real-time timeline using Adjusted_Day</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>Athlete_C, x<span class="op">=</span><span class="st">'Adjusted_Day'</span>, y<span class="op">=</span><span class="st">'Prop_Jump_High'</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'navy'</span>, label<span class="op">=</span><span class="st">'High'</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>Athlete_C, x<span class="op">=</span><span class="st">'Adjusted_Day'</span>, y<span class="op">=</span><span class="st">'Prop_Jump_Low'</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Low'</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: draw line at the transition between Season 1 and Season 2</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>season1_len <span class="op">=</span> (rolling_df[rolling_df[<span class="st">'Season'</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">'Date'</span>].<span class="bu">max</span>() <span class="op">-</span> rolling_df[rolling_df[<span class="st">'Season'</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">'Date'</span>].<span class="bu">min</span>()).days <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.axvline(season1_len, linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'lightgray'</span>, label<span class="op">=</span><span class="st">'Season Break'</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title("Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)", fontsize=16)</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)'</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>             , x <span class="op">=</span> <span class="fl">0.275</span>, y <span class="op">=</span> <span class="fl">1.05</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">276</span>, <span class="fl">0.33</span>, <span class="st">"High Band"</span>, color <span class="op">=</span> <span class="st">"navy"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">276</span>, <span class="fl">0.3875</span>, <span class="st">"Low Band"</span>, color <span class="op">=</span> <span class="st">"orange"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">60</span>, <span class="fl">0.55</span>, <span class="st">"Season 1"</span>, color <span class="op">=</span> <span class="st">"gray"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">180</span>, <span class="fl">0.55</span>, <span class="st">"Season 2"</span>, color <span class="op">=</span> <span class="st">"gray"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Adjusted Day"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="op">-</span><span class="dv">15</span>, <span class="fl">0.625</span>, <span class="st">"Proportion of Jumps"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">""</span>)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.ylabel("Proportion of Jumps")</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.legend(title='Jump Band')</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>plt.gca().tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, length <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>sns.despine(top <span class="op">=</span> <span class="va">True</span>, right <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>plt.gca().get_legend().remove()</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"./images/viz_2.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f1c7481c" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for Athlete C</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>Athlete_C <span class="op">=</span> rolling_df[rolling_df[<span class="st">"About"</span>] <span class="op">==</span> <span class="st">"Athlete C"</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot both seasons on a single real-time timeline using Adjusted_Day</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>, <span class="dv">6</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>Athlete_C, x<span class="op">=</span><span class="st">'Adjusted_Day'</span>, y<span class="op">=</span><span class="st">'Prop_Jump_High'</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'navy'</span>, label<span class="op">=</span><span class="st">'High'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>Athlete_C, x<span class="op">=</span><span class="st">'Adjusted_Day'</span>, y<span class="op">=</span><span class="st">'Prop_Jump_Low'</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Low'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: draw line at the transition between Season 1 and Season 2</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>season1_len <span class="op">=</span> (rolling_df[rolling_df[<span class="st">'Season'</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">'Date'</span>].<span class="bu">max</span>() <span class="op">-</span> rolling_df[rolling_df[<span class="st">'Season'</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">'Date'</span>].<span class="bu">min</span>()).days <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.axvline(season1_len, linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'lightgray'</span>, label<span class="op">=</span><span class="st">'Season Break'</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.title("Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)", fontsize=16)</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)'</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>             , x <span class="op">=</span> <span class="fl">0.275</span>, y <span class="op">=</span> <span class="fl">1.05</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">276</span>, <span class="fl">0.33</span>, <span class="st">"High Band"</span>, color <span class="op">=</span> <span class="st">"navy"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">276</span>, <span class="fl">0.3875</span>, <span class="st">"Low Band"</span>, color <span class="op">=</span> <span class="st">"orange"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">60</span>, <span class="fl">0.55</span>, <span class="st">"Season 1"</span>, color <span class="op">=</span> <span class="st">"gray"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">180</span>, <span class="fl">0.55</span>, <span class="st">"Season 2"</span>, color <span class="op">=</span> <span class="st">"gray"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Adjusted Day"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="op">-</span><span class="dv">15</span>, <span class="fl">0.625</span>, <span class="st">"Proportion of Jumps"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">""</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.ylabel("Proportion of Jumps")</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.legend(title='Jump Band')</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>plt.gca().tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, length <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>sns.despine(top <span class="op">=</span> <span class="va">True</span>, right <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>plt.gca().get_legend().remove()</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"./images/viz_2.png"</span>)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="dataviz_files/figure-html/cell-7-output-1.png" width="1322" height="605" class="figure-img"></p>
 </figure>
 </div>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -404,30 +398,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.3" class="anchored" data-anchor-id="making-visualization-3"><span class="header-section-number">4.3</span> Making Visualization 3</h2>
 <section id="getting-daily-averages" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="getting-daily-averages"><span class="header-section-number">4.3.1</span> Getting Daily Averages</h3>
-<div id="277e78f0" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping by day of the season and whether or not the player was in both seasons, then taking the mean of the prop_jump_high</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>daily_means <span class="op">=</span> rolling_df.groupby([<span class="st">'Adjusted_Day'</span>, <span class="st">'Player_Group'</span>])[<span class="st">'Prop_Jump_High'</span>].mean().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="df740146" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping by day of the season and whether or not the player was in both seasons, then taking the mean of the prop_jump_high</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>daily_means <span class="op">=</span> rolling_df.groupby([<span class="st">'Adjusted_Day'</span>, <span class="st">'Player_Group'</span>])[<span class="st">'Prop_Jump_High'</span>].mean().reset_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="getting-regression-lines-for-1-and-2-season-players" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="getting-regression-lines-for-1-and-2-season-players"><span class="header-section-number">4.3.2</span> Getting Regression Lines for 1 and 2 Season Players</h3>
-<div id="e9ad7e15" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Making a dataframe to hold the required linear regression values</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>linreg_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">"Player_Group"</span>, <span class="st">"Slope"</span>, <span class="st">"Intercept"</span>, <span class="st">"R-value"</span>])</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Looping through each unique player group</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> daily_means[<span class="st">"Player_Group"</span>].unique():</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Selecting the relevant data for the current player group</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    group_data <span class="op">=</span> daily_means[daily_means[<span class="st">"Player_Group"</span>] <span class="op">==</span> group]</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Running linear regression on Adjusted_Day vs Prop_Jump_High</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    slope, intercept, r_value, p_value, std_err <span class="op">=</span> stats.linregress(group_data[<span class="st">'Adjusted_Day'</span>], group_data[<span class="st">'Prop_Jump_High'</span>])</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adding the linear regression results to the DataFrame</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    linreg_df.loc[<span class="bu">len</span>(linreg_df)] <span class="op">=</span> [group, slope, intercept, r_value]</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing the table with linear regression results</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>linreg_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e6fff364" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Making a dataframe to hold the required linear regression values</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>linreg_df <span class="op">=</span> pd.DataFrame(columns<span class="op">=</span>[<span class="st">"Player_Group"</span>, <span class="st">"Slope"</span>, <span class="st">"Intercept"</span>, <span class="st">"R-value"</span>])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Looping through each unique player group</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> group <span class="kw">in</span> daily_means[<span class="st">"Player_Group"</span>].unique():</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Selecting the relevant data for the current player group</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    group_data <span class="op">=</span> daily_means[daily_means[<span class="st">"Player_Group"</span>] <span class="op">==</span> group]</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Running linear regression on Adjusted_Day vs Prop_Jump_High</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    slope, intercept, r_value, p_value, std_err <span class="op">=</span> stats.linregress(group_data[<span class="st">'Adjusted_Day'</span>], group_data[<span class="st">'Prop_Jump_High'</span>])</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Adding the linear regression results to the DataFrame</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    linreg_df.loc[<span class="bu">len</span>(linreg_df)] <span class="op">=</span> [group, slope, intercept, r_value]</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Showing the table with linear regression results</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>linreg_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
@@ -466,38 +460,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="generating-and-saving-visualization-3" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="generating-and-saving-visualization-3"><span class="header-section-number">4.3.3</span> Generating and Saving Visualization 3</h3>
-<div id="8f8766c6" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Making palette for below plot</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>palette <span class="op">=</span> {</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"both_seasons"</span> : <span class="st">"navy"</span>,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"one_season"</span> : <span class="st">"orange"</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Making linear regression plot of prop_jump_high by # seasons played</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> sns.lmplot(</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> daily_means,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Adjusted_Day'</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="st">'Prop_Jump_High'</span>,</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    hue <span class="op">=</span> <span class="st">'Player_Group'</span>,</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    palette <span class="op">=</span> palette,</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    markers <span class="op">=</span> [<span class="st">"o"</span>, <span class="st">"s"</span>],</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    scatter_kws <span class="op">=</span> {<span class="st">"s"</span>: <span class="dv">50</span>, <span class="st">"alpha"</span>: <span class="fl">0.5</span>},</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> <span class="dv">6</span>,</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>plt.axvline(x <span class="op">=</span> season1_length, color <span class="op">=</span> <span class="st">'lightgray'</span>, linestyle <span class="op">=</span> <span class="st">'--'</span>, label <span class="op">=</span> <span class="st">"Season Break"</span>)</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Change in Mean Proportion of Jumps in High Band by Day for One and Two Season Players'</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>             , x <span class="op">=</span> <span class="fl">0.375</span>, y <span class="op">=</span> <span class="fl">1.09</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Adjusted Day'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="op">-</span><span class="dv">15</span>, <span class="fl">0.3225</span>, <span class="st">"Mean Proportion of Jumps in High Band"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.ylabel('Mean Proportion of Jumps in High Band')</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">''</span>)</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">275</span>, <span class="fl">0.259</span>, <span class="st">"Two Seasons"</span>, color <span class="op">=</span> <span class="st">"navy"</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">150</span>, <span class="fl">0.195</span>, <span class="st">"One Season"</span>, color <span class="op">=</span> <span class="st">"orange"</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>plt.gca().tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, length <span class="op">=</span> <span class="dv">0</span>)</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>plot._legend.remove()</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3eb57499" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Making palette for below plot</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>palette <span class="op">=</span> {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"both_seasons"</span> : <span class="st">"navy"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"one_season"</span> : <span class="st">"orange"</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Making linear regression plot of prop_jump_high by # seasons played</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plot <span class="op">=</span> sns.lmplot(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> daily_means,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">'Adjusted_Day'</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="st">'Prop_Jump_High'</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    hue <span class="op">=</span> <span class="st">'Player_Group'</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    palette <span class="op">=</span> palette,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    markers <span class="op">=</span> [<span class="st">"o"</span>, <span class="st">"s"</span>],</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    scatter_kws <span class="op">=</span> {<span class="st">"s"</span>: <span class="dv">50</span>, <span class="st">"alpha"</span>: <span class="fl">0.5</span>},</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    height <span class="op">=</span> <span class="dv">6</span>,</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    aspect <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>plt.axvline(x <span class="op">=</span> season1_length, color <span class="op">=</span> <span class="st">'lightgray'</span>, linestyle <span class="op">=</span> <span class="st">'--'</span>, label <span class="op">=</span> <span class="st">"Season Break"</span>)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">'Change in Mean Proportion of Jumps in High Band by Day for One and Two Season Players'</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>             , x <span class="op">=</span> <span class="fl">0.375</span>, y <span class="op">=</span> <span class="fl">1.09</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Adjusted Day'</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="op">-</span><span class="dv">15</span>, <span class="fl">0.3225</span>, <span class="st">"Mean Proportion of Jumps in High Band"</span>, weight <span class="op">=</span> <span class="st">"bold"</span>)</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.ylabel('Mean Proportion of Jumps in High Band')</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">''</span>)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">275</span>, <span class="fl">0.259</span>, <span class="st">"Two Seasons"</span>, color <span class="op">=</span> <span class="st">"navy"</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">150</span>, <span class="fl">0.195</span>, <span class="st">"One Season"</span>, color <span class="op">=</span> <span class="st">"orange"</span>, weight <span class="op">=</span> <span class="st">'bold'</span>)</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>plt.gca().tick_params(axis <span class="op">=</span> <span class="st">'both'</span>, length <span class="op">=</span> <span class="dv">0</span>)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>plot._legend.remove()</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"./images/viz_3.png"</span>)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

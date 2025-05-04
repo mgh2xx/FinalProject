@@ -98,8 +98,8 @@ for ax in axs:
     ax.legend(handles = [one_season_patch, two_season_patch, athlete_c_patch], title = 'Player Seasons', loc = 'upper right')
 
 # Showing plots
-plt.show()
 plt.savefig("./images/viz_1.png")
+plt.show()
 ```
 
 ## Making Visualization 2
@@ -162,8 +162,8 @@ plt.tight_layout()
 plt.gca().tick_params(axis = 'both', length = 0)
 sns.despine(top = True, right = True)
 plt.gca().get_legend().remove()
-plt.show()
 plt.savefig("./images/viz_2.png")
+plt.show()
 ```
 
 ## Making Visualization 3
@@ -226,5 +226,6 @@ plt.text(275, 0.259, "Two Seasons", color = "navy", weight = 'bold')
 plt.text(150, 0.195, "One Season", color = "orange", weight = 'bold')
 plt.gca().tick_params(axis = 'both', length = 0)
 plot._legend.remove()
+plt.savefig("./images/viz_3.png")
 plt.show()
 ```
