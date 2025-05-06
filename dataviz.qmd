@@ -87,7 +87,7 @@ for ax, season in zip(axs, [1, 2]):
     # Filter data for the current season
     season_data = rolling_df[rolling_df["Season"] == season]
     
-    # Calculate date percentiles
+    # Calculate dates for x-ticks
     date_percentiles = np.percentile(season_data["Date"].values.astype('int64'), [0, 25, 50, 75, 100])
     date_ticks = pd.to_datetime(date_percentiles)
 
@@ -95,7 +95,7 @@ for ax, season in zip(axs, [1, 2]):
     plot = sns.lineplot(data=season_data, x='Date', y="Prop_Jump_High", hue="About", palette=palette, ax=ax)
     plot_c = sns.lineplot(data=season_data[season_data["About"] == "Athlete C"], x="Date", y="Prop_Jump_High", color='lightblue', ax=ax)
 
-    # Formatting plot
+    # Scaffolding
     ax.set_title(f"Season {season}", weight='bold')
     ax.set_xlabel("Date", weight="bold")
     ax.set_ylabel('')
@@ -103,11 +103,11 @@ for ax, season in zip(axs, [1, 2]):
     sns.despine(ax=ax, top=True, right=True, left=False, bottom=False)
     ax.tick_params(axis='both', which='both', length=0, width=0)
 
-    # Set x-axis ticks to selected percentiles
+    # Set x-axis ticks to selected dates
     ax.set_xticks(date_ticks)
     ax.set_xticklabels([dt.strftime('%b %Y') for dt in date_ticks])
 
-# Showing plots
+# Adding title, subtitle, axis label, etc
 fig.text(0.125, 1, 'High-Band Jump Trends by Player: Comparing', fontsize=20, rotation='horizontal', weight='bold')
 fig.text(0.365, 1, 'One-Season', fontsize=20, rotation='horizontal', weight='bold', color='orange')
 fig.text(0.429, 1, 'vs', fontsize=20, rotation='horizontal', weight='bold')
@@ -116,7 +116,9 @@ fig.text(0.506, 1, 'Tenure', fontsize=20, rotation='horizontal', weight='bold')
 fig.text(0.125, 0.965, "No clear trend appears amongst one-season players, whereas two-season players show growth in their second season, as highlighted by", fontsize=12, ha="left")
 fig.text(0.51, 0.965, "Athlete C", color = "lightblue", fontsize = 12)
 fig.text(0.125, 0.9, 'High-Band Proportion', fontsize=10, rotation='horizontal', weight='bold')
-plt.subplots_adjust(wspace=0.05)  # Decrease this value to move subplots closer
+plt.subplots_adjust(wspace=0.05)
+
+# Saving and Showing Plot
 plt.savefig("./images/viz_1.png", bbox_inches='tight')
 plt.show()
 ```
@@ -161,13 +163,14 @@ plt.figure(figsize=(14, 6))
 sns.lineplot(data=Athlete_C, x='Adjusted_Day', y='Prop_Jump_High', marker='o', color='navy', label='High')
 sns.lineplot(data=Athlete_C, x='Adjusted_Day', y='Prop_Jump_Low', marker='o', color='orange', label='Low')
 
-# Optional: draw line at the transition between Season 1 and Season 2
+# Adding line between Season 1 and Season 2
 season1_len = (rolling_df[rolling_df['Season'] == 1]['Date'].max() - rolling_df[rolling_df['Season'] == 1]['Date'].min()).days + 1
 plt.axvline(season1_len, linestyle='--', color='lightgray', label='Season Break')
 
-#plt.title("Athlete C Combined Seasons Jump Band Proportions (7-Game Rolling Avg)", fontsize=16)
-plt.suptitle('Athlete C Sees Significant Change in Jump-Band Proportions Over the Course of 2 Seasons'
-             , x = 0.33, y = 0.965, weight = "bold")
+# Adding subtitle
+plt.suptitle('Athlete C Sees Significant Change in Jump-Band Proportions Over the Course of 2 Seasons', x = 0.33, y = 0.965, weight = "bold")
+
+# Adding title and subtitle
 plt.title("The two seasons Athlete C spends in the program results in notable growth in high-band jump proportion and decrease in the low-band jump proportion", ha = "left", fontsize = 10, x = 0, y = 1.075)
 plt.text(276, 0.33, "High Band", color = "navy", weight = "bold")
 plt.text(276, 0.3875, "Low Band", color = "orange", weight = "bold")
@@ -176,12 +179,14 @@ plt.text(180, 0.55, "Season 2", color = "gray", weight = "bold")
 plt.xlabel("Adjusted Day", weight = "bold")
 plt.text(-15, 0.625, "Proportion of Jumps", weight = "bold")
 plt.ylabel("")
-#plt.ylabel("Proportion of Jumps")
-#plt.legend(title='Jump Band')
+
+# Formatting
 plt.tight_layout()
 plt.gca().tick_params(axis = 'both', length = 0)
 sns.despine(top = True, right = True)
 plt.gca().get_legend().remove()
+
+# Saving and Showing Plot
 plt.savefig("./images/viz_2.png", bbox_inches='tight')
 plt.show()
 ```
@@ -235,17 +240,21 @@ plot = sns.lmplot(
     aspect = 2
 )
 
+# Adding subtitle and title
 plt.suptitle('Two-Season Players See Positive Growth in High-Band Jump Proportions'
              , x = 0.305, y = 1.125, weight = "bold")
 plt.title("On average, players with 2 seasons of data increased their proportion of jumps in the high band, while 1-season players\nsaw an average decrease (likely due to fatigue, not regression).", x = 0, y = 1.055, ha = "left", fontsize = 10)
+
+# Scaffolding/Formatting
 plt.xlabel('Adjusted Day', weight = 'bold')
 plt.text(-15, 0.32, "Mean Proportion of Jumps in High Band", weight = "bold")
-#plt.ylabel('Mean Proportion of Jumps in High Band')
 plt.ylabel('')
 plt.text(275, 0.259, "Two Seasons", color = "navy", weight = 'bold')
 plt.text(150, 0.195, "One Season", color = "orange", weight = 'bold')
 plt.gca().tick_params(axis = 'both', length = 0)
 plot._legend.remove()
+
+# Saving and Showing Plot
 plt.savefig("./images/viz_3.png", bbox_inches='tight')
 plt.show()
 ```
